@@ -6,10 +6,22 @@
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
-	
+	<js:beads>
+		<js:ApplicationDataBinding/>
+	</js:beads>
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:VContainer>
+				<js:style>
+					<js:SimpleCSSStyles padding="10"/>
+				</js:style>
+				<js:TextInput id="textInput">
+					<js:beads>
+						<js:TextPromptBead prompt="Enter text here"/>
+					</js:beads>
+				</js:TextInput>
+				<js:Label text="{textInput.text}"/>
+			</js:VContainer>
 		</js:View>
 	</js:initialView>
 </js:Application>

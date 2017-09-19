@@ -1,3 +1,3 @@
 # Examples
 
-HelloWorld in FlexJS. Shows a label.
+DataBinding example. Shows a label bound to a text input.
