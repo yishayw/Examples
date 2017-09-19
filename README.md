@@ -1,3 +1,3 @@
 # Examples
 
-HelloWorld in FlexJS. Shows a label.
+States example. Among state dependent properties are text, className, includeIn.

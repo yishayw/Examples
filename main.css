@@ -1,0 +1,16 @@
+/* CSS file */
+
+@namespace basic "library://ns.apache.org/flexjs/basic";
+@namespace views "views.*";
+
+* {
+	fontSize: 30px;
+}
+
+.Verbose {
+	fontSize: 20px;
+}
+
+global { 
+	IStatesImpl: ClassReference("org.apache.flex.core.SimpleStatesImpl"); 
+} 

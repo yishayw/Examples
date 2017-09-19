@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<js:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:js="library://ns.apache.org/flexjs/basic"
+		 currentState="verbose"
+		 xmlns:beads="beads.*" 
+		 xmlns:components="components.*">
+	<fx:Script>
+		<![CDATA[
+			import org.apache.flex.events.MouseEvent;
+			
+			protected function textbutton1_clickHandler(event:org.apache.flex.events.MouseEvent):void
+			{
+				currentState = currentState == "terse" ? "verbose" : "terse";
+			}
+			
+		]]>
+	</fx:Script>
+	<js:states>
+		<js:State name="verbose"/>
+		<js:State name="terse"/>
+	</js:states>
+	<js:beads>
+		<js:ViewDataBinding/>
+		<js:VerticalLayout/>
+	</js:beads>
+	<js:Label text="boring"
+			  className.verbose="Verbose" className.terse="Terse">
+	</js:Label>
+	<js:HContainer>
+		<js:TextButton text="Button1" click="textbutton1_clickHandler(event)"/>
+		<js:TextButton id="uselessButton" text="Button2"/>
+	</js:HContainer>
+	<js:Label id="downLabel" text.terse="Stuff" text.verbose="Button1 changes state, Button2 is useless"/>
+	<js:TextButton text="Another Button" includeIn="verbose"/>
+</js:View>
