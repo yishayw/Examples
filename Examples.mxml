@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-				xmlns:js="library://ns.apache.org/flexjs/basic"
-				>
-	
-	<js:valuesImpl>
-		<js:SimpleCSSValuesImpl />
-	</js:valuesImpl>	
-	
-	<js:initialView>
-		<js:View>
-			<js:Label text="Hello World"/>	
-		</js:View>
-	</js:initialView>
-</js:Application>
+<ns1:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:ns1="library://ns.apache.org/flexjs/express"
+				 xmlns:ns="library://ns.apache.org/flexjs/basic">
+	<fx:Declarations>
+		<ns:Parallel id="parallel">
+			<ns:Move yBy="100" xBy="100" target="myContainer"/>
+			<ns:Fade target="myContainer" alphaFrom="1" alphaTo="0"/>
+		</ns:Parallel>
+		<ns:Sequence id="sequence">
+			<ns:Move yBy="100" xBy="100" target="myContainer"/>
+			<ns:Fade target="myContainer" alphaFrom="1" alphaTo="0"/>
+		</ns:Sequence>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import org.apache.flex.events.MouseEvent;
+			
+			protected function sequenceClickHandler(event:org.apache.flex.events.MouseEvent):void
+			{
+				sequence.play();
+			}
+			
+			protected function parallelClickHandler(event:org.apache.flex.events.MouseEvent):void
+			{
+				parallel.play();
+			}
+			
+		]]>
+	</fx:Script>
+	<ns1:initialView>
+		<ns1:View width="100%" height="100%">
+			<ns1:VContainer width="100%" height="100%">
+				<ns1:HContainer>
+					<ns1:TextButton text="Parallel" click="parallelClickHandler(event)"/>
+					<ns1:TextButton text="Sequence" click="sequenceClickHandler(event)"/>
+				</ns1:HContainer>
+				<ns1:Container width="100" height="100" id="myContainer">
+					<ns1:style>
+						<ns:SimpleCSSStyles backgroundColor="blue"/>
+					</ns1:style>
+				</ns1:Container>
+			</ns1:VContainer>			
+		</ns1:View>
+	</ns1:initialView>
+</ns1:Application>
