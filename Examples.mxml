@@ -9,7 +9,8 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:List x="500" y="50" width="400" height="300" rowHeight="40"  className="DragDropList">
+			<js:Label x="100" y="50" text="Change order of items by dragging"/>	
+			<js:List x="100" y="100">
 				<js:dataProvider>
 					<fx:Array>
 						<fx:String>One</fx:String>
@@ -20,6 +21,7 @@
 				</js:dataProvider>
 				<js:beads>
 					<js:SingleSelectionDragSourceBead/>
+					<js:SingleSelectionDragImageBead/>
 					<js:SingleSelectionDropTargetBead />
 					<js:SingleSelectionDropIndicatorBead />
 				</js:beads>
