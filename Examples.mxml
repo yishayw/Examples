@@ -9,7 +9,21 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:List x="500" y="50" width="400" height="300" rowHeight="40"  className="DragDropList">
+				<js:dataProvider>
+					<fx:Array>
+						<fx:String>One</fx:String>
+						<fx:String>Two</fx:String>
+						<fx:String>Three</fx:String>
+						<fx:String>Four</fx:String>
+					</fx:Array>
+				</js:dataProvider>
+				<js:beads>
+					<js:SingleSelectionDragSourceBead/>
+					<js:SingleSelectionDropTargetBead />
+					<js:SingleSelectionDropIndicatorBead />
+				</js:beads>
+			</js:List>
 		</js:View>
 	</js:initialView>
 </js:Application>
