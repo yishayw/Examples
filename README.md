@@ -1,3 +1,3 @@
 # Examples
 
-Add lookalike elements based on an existing one.
+Add look-alike elements based on an existing one.
