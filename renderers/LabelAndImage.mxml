@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<js:MXMLItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			  xmlns:js="library://ns.apache.org/flexjs/basic">
+	<fx:Script>
+		<![CDATA[
+			override public function set data(value:Object):void
+			{
+				super.data = value;
+				label.text = value as String;
+			}
+		]]>
+	</fx:Script>
+	<js:beads>
+		<js:HorizontalLayout/>
+	</js:beads>
+	<js:Label id="label"/>
+	<js:Spacer width="30"/>
+	<js:Image src="cat1.png"  width="50" height="50"/>
+</js:MXMLItemRenderer>

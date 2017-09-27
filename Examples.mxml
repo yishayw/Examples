@@ -10,7 +10,7 @@
 	<js:initialView>
 		<js:View>
 			<js:Label x="100" y="50" text="Change order of items by dragging"/>	
-			<js:List x="100" y="100">
+			<js:List x="100" y="100" itemRenderer="renderers.LabelAndImage">
 				<js:dataProvider>
 					<fx:Array>
 						<fx:String>One</fx:String>
