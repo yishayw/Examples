@@ -2,6 +2,22 @@
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/flexjs/basic"
 				>
+	<fx:Script>
+		<![CDATA[
+			import org.apache.flex.core.Lookalike;
+			import org.apache.flex.core.UIBase;
+			import org.apache.flex.events.MouseEvent;
+			
+			protected function textbutton1_clickHandler(event:org.apache.flex.events.MouseEvent):void
+			{
+				var lookAlike:UIBase = new Lookalike(myGroup);
+				lookAlike.x = Math.random() * 600;
+				lookAlike.y = Math.random() * 600;
+				addElement(lookAlike);
+			}
+			
+		]]>
+	</fx:Script>
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
@@ -9,7 +25,12 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:TextButton text="Show Lookalike" x="100" y="100" click="textbutton1_clickHandler(event)"/>
+			<js:HContainer id="myGroup">
+				<js:Label text="A cat"/>
+				<js:Spacer width="10"/>
+				<js:Image src="cat1.png" width="50" height="50"/>
+			</js:HContainer>
 		</js:View>
 	</js:initialView>
 </js:Application>
