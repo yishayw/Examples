@@ -1,5 +1,5 @@
 # Examples
 
-HelloWorld in FlexJS. Shows a label.
-
-Browse branches to see what examples are available. Make pull requests, open issues, become collaborators to get this effort going.
+FileProxy example demonstrating client side browse and load. Checkout beads in
+package org.apache.flex.file.beads for available operations on FileProxy.
+ 

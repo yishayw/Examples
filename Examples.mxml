@@ -2,6 +2,42 @@
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/flexjs/basic"
 				>
+	<fx:Declarations>
+		<js:FileProxy id="myFileProxy" modelChanged="modelChangedHandler(event)">
+			<js:beads>
+				<js:FileBrowser id="myBrowser"/>
+				<js:FileLoader id="myLoader"/>
+			</js:beads>
+		</js:FileProxy>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import org.apache.flex.events.Event;
+			import org.apache.flex.events.MouseEvent;
+			import org.apache.flex.file.beads.FileModel;
+			import org.apache.flex.html.SimpleAlert;
+			
+			protected function clickHandler(event:org.apache.flex.events.MouseEvent):void
+			{
+				myBrowser.browse();
+			}
+			
+			protected function modelChangedHandler(event:org.apache.flex.events.Event):void
+			{
+				myFileProxy.model.addEventListener("blobChanged", blobChangedHandler);
+				trace('loading: ' +  myFileProxy.name);
+				myLoader.load();
+			}
+			
+			private function blobChangedHandler(e:org.apache.flex.events.Event):void
+			{
+				var fileModel:FileModel = myFileProxy.model as FileModel;
+				SimpleAlert.show(fileModel.blob.length + " bytes of " + fileModel.name + " were loaded", this);
+			}
+			
+		]]>
+	</fx:Script>
+	
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
@@ -9,7 +45,7 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:TextButton text="Browse" click="clickHandler(event)"/>
 		</js:View>
 	</js:initialView>
 </js:Application>
