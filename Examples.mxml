@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-				xmlns:js="library://ns.apache.org/royale/basic"
+				xmlns:js="library://ns.apache.org/royale/basic" 
 				applicationComplete="application1_applicationCompleteHandler(event)"
 				>
 	<fx:Script>
 		<![CDATA[
+			import org.apache.royale.events.MouseEvent;
 			import org.apache.royale.events.Event;
-			
+			import org.apache.royale.collections.ArrayList;
 			protected function application1_applicationCompleteHandler(event:org.apache.royale.events.Event):void
 			{
 				createDp();
 			}
 			
+			private function clickHandler(e:MouseEvent):void
+			{
+				createDp();
+			}
+
 			private function createDp():void
 			{
-				var dp:Array = [];
+				var dp:ArrayList = new ArrayList();
 				for (var i:int = 0; i < 10; i++)
 				{
 					var name:String = "name" + i;
 					var age:int = Math.round(Math.random() * 99) + 1;
-					dp.push({name: name, age: age});
+					dp.addItem({name: name, age: age});
 				}
+				dataGrid.dataProvider = dp;
 			}
 		]]>
 	</fx:Script>
@@ -31,8 +38,9 @@
 	
 	<js:initialView>
 		<js:View width="100%" height="100%">
+			<js:TextButton text="Click" click="clickHandler(event)" x="200"/>
 			<js:DataGrid id="dataGrid" x="20" y="30" width="400" height="200" rowHeight="40">
-					<js:beads>
+				<js:beads>
 					<js:EasyDataProviderChangeNotifier/>
 				</js:beads>
 				<js:columns>
