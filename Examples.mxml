@@ -8,12 +8,14 @@
 			import org.apache.royale.events.MouseEvent;
 			import org.apache.royale.events.Event;
 			import org.apache.royale.collections.ArrayList;
+			import org.apache.royale.html.DataGrid;
+			
 			protected function application1_applicationCompleteHandler(event:org.apache.royale.events.Event):void
 			{
 				createDp();
 			}
 			
-			private function clickHandler(e:MouseEvent):void
+			private function changeDpHandler(e:MouseEvent):void
 			{
 				createDp();
 			}
@@ -27,7 +29,17 @@
 					var age:int = Math.round(Math.random() * 99) + 1;
 					dp.addItem({name: name, age: age});
 				}
-				dataGrid.dataProvider = dp;
+				for each (var dataGrid:DataGrid in [dataGrid1, dataGrid2])
+				{
+					var list:ArrayList = dataGrid.dataProvider as ArrayList;
+					if (list)
+					{
+						list.source = dp.source;
+					} else
+					{
+						dataGrid.dataProvider = dp;	
+					}
+				}
 			}
 		]]>
 	</fx:Script>
@@ -38,10 +50,20 @@
 	
 	<js:initialView>
 		<js:View width="100%" height="100%">
-			<js:TextButton text="Click" click="clickHandler(event)" x="200"/>
-			<js:DataGrid id="dataGrid" x="20" y="30" width="400" height="200" rowHeight="40">
+			<js:TextButton text="Change DP" click="changeDpHandler(event)" x="200"/>
+			<js:DataGrid id="dataGrid1" x="20" y="30" width="400" height="200" rowHeight="40">
 				<js:beads>
 					<js:EasyDataProviderChangeNotifier/>
+				</js:beads>
+				<js:columns>
+					<js:DataGridColumn label="Name" dataField="name" columnWidth="250"/>
+					<js:DataGridColumn label="Age" dataField="age" columnWidth="50" />
+				</js:columns>
+			</js:DataGrid>
+			<js:DataGrid id="dataGrid2" x="500" y="30" width="400" height="200" rowHeight="40">
+				<js:beads>
+					<js:EasyDataProviderChangeNotifier/>
+					<js:DataGridForceChangePropagator/>
 				</js:beads>
 				<js:columns>
 					<js:DataGridColumn label="Name" dataField="name" columnWidth="250"/>
