@@ -63,7 +63,7 @@
 			<js:DataGrid id="dataGrid2" x="500" y="30" width="400" height="200" rowHeight="40">
 				<js:beads>
 					<js:EasyDataProviderChangeNotifier/>
-					<js:DataGridForceChangePropagator/>
+					<js:DataGridColumnForceChangePropagator/>
 				</js:beads>
 				<js:columns>
 					<js:DataGridColumn label="Name" dataField="name" columnWidth="250"/>
