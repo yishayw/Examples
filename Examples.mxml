@@ -2,14 +2,25 @@
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/royale/basic"
 				>
-	
+	<fx:Declarations>
+		<js:CurrencyFormatter currencySymbol="$" id="cf" fractionalDigits="2"/>
+	</fx:Declarations>	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
-	
+
+	<fx:Script>
+		<![CDATA[
+			private function changeListener():void
+			{
+				myLabel.text = cf.format(Number(myInput.text));
+			}
+		]]>
+	</fx:Script>
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:TextInput id="myInput" change="changeListener()"/>
+			<js:Label id="myLabel" y="30"/>
 		</js:View>
 	</js:initialView>
 </js:Application>
