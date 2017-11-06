@@ -1,3 +1,3 @@
 # Examples
 
-Date field and and access to formatted text.
+Date field and access to formatted text.
