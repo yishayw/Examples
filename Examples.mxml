@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ns1:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-				 xmlns:ns1="library://ns.apache.org/flexjs/express"
-				 xmlns:ns="library://ns.apache.org/flexjs/basic"
-				 >
-	
-	<ns1:initialView>
-		<ns1:View>
-			<ns:Accordion width="200" height="200">
-				<ns:dataProvider>
-					<fx:Array>
-						<ns:Group>
-							<ns:beads>
-								<ns:TitleBarModel title="One"/>
-							</ns:beads>
-							<ns:TextButton text="Button1" width="50" height="50"/>
-						</ns:Group>
-						<ns:Group>
-							<ns:beads>
-								<ns:TitleBarModel title="Two"/>
-							</ns:beads>
-							<ns:TextButton text="Button2" width="90" height="90"/>
-						</ns:Group>
-					</fx:Array>
-				</ns:dataProvider>
-			</ns:Accordion>
-		</ns1:View>
-	</ns1:initialView>
-</ns1:Application>
+<js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+				applicationComplete="applicationCompleteHandler()"
+				xmlns:js="library://ns.apache.org/royale/basic" 
+				>
+	<fx:Script>
+		<![CDATA[
+			private function applicationCompleteHandler():void
+			{
+				myLabel.text = "Default scrollbar width is: " + myBead.scrollbarWidth;
+			}
+		]]>
+	</fx:Script>
+	<js:beads>
+		<js:GetScrollbarWidth id="myBead"/>
+	</js:beads>
+	<js:valuesImpl>
+		<js:SimpleCSSValuesImpl />
+	</js:valuesImpl>	
+	<js:initialView>
+		<js:View>
+			<js:Label id="myLabel" x="20" y="20"/>
+		</js:View>
+	</js:initialView>
+</js:Application>

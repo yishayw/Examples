@@ -1,3 +1,3 @@
 # Examples
 
-Simple Accordion example.
+Detect browser's default scrollbar width
