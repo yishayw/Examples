@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+				applicationComplete="applicationCompleteHandler()"
 				xmlns:js="library://ns.apache.org/royale/basic"
 				>
 	
+	<fx:Script>
+		<![CDATA[
+			import org.apache.royale.html.Container;
+			import org.apache.royale.events.Event;
+			import org.apache.royale.html.Button;
+			import org.apache.royale.core.IUIBase;
+			import org.apache.royale.core.IParent;
+			
+			private function applicationCompleteHandler():void
+			{
+				var newContainer:Container = new Container();
+				newContainer.addEventListener('initComplete', initCompleteHandler);
+				newContainer.percentWidth = 50;
+				var c2:Container = new Container();
+				c2.percentWidth = 50;
+				var b1:Button = new Button();
+				b1.percentWidth = 50;
+				c2.addElement(b1);
+				newContainer.addElement(c2);
+				slot.addElement(newContainer);
+			}
+			
+			private function initCompleteHandler(e:Event):void
+			{
+				var one:IUIBase = slot.getElementAt(0) as IUIBase;
+				var two:IUIBase = (one as IParent).getElementAt(0) as IUIBase;
+				var three:IUIBase = (two as IParent).getElementAt(0) as IUIBase;
+				myLabel.text = "widths are: " + slot.width + " " + one.width + " " + two.width + " " + three.width;
+			}
+		]]>
+	</fx:Script>
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
 	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:Container id="slot" width="100"/>
+			<js:Label x="100" y="100" id="myLabel"/>
 		</js:View>
 	</js:initialView>
 </js:Application>
