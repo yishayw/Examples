@@ -1,36 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-				xmlns:js="library://ns.apache.org/royale/basic" 
+			xmlns:comp="components.*"
+			applicationComplete="application1_applicationCompleteHandler()"
+			xmlns:js="library://ns.apache.org/royale/basic" 
 				>
 	<fx:Script>
 		<![CDATA[
-			private function increaseBlueHeight():void
+			private function application1_applicationCompleteHandler():void
 			{
-				redContainer.height = 150;
+				myLabel.text = "myProp: " + myComp.myProp;
 			}
 		]]>
 	</fx:Script>
-	<js:beads>
-		<js:GetScrollbarWidth id="myBead"/>
-	</js:beads>
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
 	<js:initialView>
 		<js:View>
-			<js:TextButton x="200" text="Click" click="increaseBlueHeight()"/>
-			<js:Container width="100" height="100">
-				<js:beads>
-					<js:OneFlexibleChildHorizontalLayout flexibleChild="redContainer"/>
-					<js:ScrollingViewport/>
-				</js:beads>
-				<js:Container id="redContainer" height="100">
-					<js:style><js:SimpleCSSStyles backgroundColor="red"/></js:style>
-				</js:Container>
-				<js:Container id="blueContainer" height="100" width="10">
-					<js:style><js:SimpleCSSStyles backgroundColor="blue"/></js:style>
-				</js:Container>
-			</js:Container>
+			<comp:MyComp id="myComp" myProp="true"/>
+			<js:Label id="myLabel"/>
 		</js:View>
 	</js:initialView>
 </js:Application>

@@ -1,3 +1,3 @@
 # Examples
 
-Detect browser's default scrollbar width
+Initialization problem in release.
