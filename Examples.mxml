@@ -9,7 +9,16 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:Container width="100" height="100">
+				<js:DropDownList width="100%" id="myList">
+					<js:dataProvider>
+						<fx:Array>
+							<fx:String>A very long String this is one two three</fx:String>
+							<fx:String>Short</fx:String>
+						</fx:Array>
+					</js:dataProvider>
+				</js:DropDownList>
+			</js:Container>
 		</js:View>
 	</js:initialView>
 </js:Application>
