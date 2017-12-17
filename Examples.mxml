@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/royale/basic"
+				xmlns:mdl="library://ns.apache.org/mdl"
 				>
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
 	
+	<fx:Script>
+		<![CDATA[
+			import org.apache.royale.events.Event;
+			private function throttlebead1_startingThrottleHandler(e:Event):void
+			{
+				myLabel.text = "slider started at " + mySlider.value;
+			}
+			
+			private function throttlebead1_finishedTrottleHandler(e:Event):void
+			{
+				myLabel.text = myLabel.text + " and finished at " + mySlider.value;
+			}
+		]]>
+	</fx:Script>
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:VContainer>
+				<js:Label id="myLabel"/>
+				<js:Slider id="mySlider">
+					<js:beads>
+						<js:ThrottleBead interval="300" event="valueChange" 
+										 startingThrottle="throttlebead1_startingThrottleHandler(event)" 
+										 finishedTrottle="throttlebead1_finishedTrottleHandler(event)"/>
+					</js:beads>
+				</js:Slider>
+			</js:VContainer>
 		</js:View>
 	</js:initialView>
 </js:Application>
