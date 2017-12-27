@@ -1,7 +1,5 @@
 /* CSS file */
 
-@namespace basic "library://ns.apache.org/flexjs/basic";
-@namespace views "views.*";
 
 * {
 	fontSize: 30px;
@@ -12,5 +10,5 @@
 }
 
 global { 
-	IStatesImpl: ClassReference("org.apache.flex.core.SimpleStatesImpl"); 
+	IStatesImpl: ClassReference("org.apache.royale.core.SimpleStatesImpl"); 
 } 

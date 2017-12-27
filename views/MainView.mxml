@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:View xmlns:fx="http://ns.adobe.com/mxml/2009"
-		 xmlns:js="library://ns.apache.org/flexjs/basic"
+		 xmlns:js="library://ns.apache.org/royale/basic"
 		 currentState="verbose"
 		 xmlns:beads="beads.*" 
 		 xmlns:components="components.*">
 	<fx:Script>
 		<![CDATA[
-			import org.apache.flex.events.MouseEvent;
+			import org.apache.royale.events.MouseEvent;
 			
-			protected function textbutton1_clickHandler(event:org.apache.flex.events.MouseEvent):void
+			protected function textbutton1_clickHandler(event:org.apache.royale.events.MouseEvent):void
 			{
 				currentState = currentState == "terse" ? "verbose" : "terse";
 			}
