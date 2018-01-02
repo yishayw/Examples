@@ -1,5 +1,3 @@
 # Examples
 
-HelloWorld in Apache Royale. Shows a label.
-
-Browse branches to see what examples are available. Make pull requests, open issues, become collaborators to get this effort going.
+MaskBead takes an SVG and turns it into a mask. It contains methods for masking and unmasking arbitrary elements.
