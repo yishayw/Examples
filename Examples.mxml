@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/royale/basic"
+				xmlns:ns="library://ns.apache.org/royale/svg"
 				>
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
-	
+	<js:beads>
+		<js:BrowserResizeHandler/>
+	</js:beads>	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<ns:GraphicContainer x="50" y="50">
+				<ns:Rect width="90" height="90">
+					<ns:fill>
+						<js:SolidColor color="blue"/>
+					</ns:fill>
+				</ns:Rect>
+				<ns:Rect width="50" height="50" x="50" y="50">
+					<ns:fill>
+						<js:SolidColor color="red"/>
+					</ns:fill>
+				</ns:Rect>
+			</ns:GraphicContainer>
 		</js:View>
 	</js:initialView>
 </js:Application>
