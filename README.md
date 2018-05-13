@@ -1,3 +1,3 @@
 # Examples
 
-MaskBead takes an SVG and turns it into a mask. It contains methods for masking and unmasking arbitrary elements.
+StyleInheritanceWithObserver defines a style name that will be inherited by descendants and observes additions to the DOM to make sure new descendants also inherit this style name.

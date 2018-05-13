@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-				applicationComplete="application1_applicationCompleteHandler(event)"
 				xmlns:js="library://ns.apache.org/royale/basic" xmlns:ns="library://ns.apache.org/royale/svg"
+				xmlns:mdl="library://ns.apache.org/royale/mdl"
 				>
 	<fx:Script>
 		<![CDATA[
-			import org.apache.royale.events.Event;
+			import org.apache.royale.events.MouseEvent;
+			import org.apache.royale.html.Label;
 			
-			protected function application1_applicationCompleteHandler(event:Event):void
+			protected function textbutton1_clickHandler(event:MouseEvent):void
 			{
-				myCompoundGraphic.drawRect(0, 0, 50, 50);
-				myFill.color = 0xFFFFFF;
-				myCompoundGraphic.drawRect(10, 10, 30, 30);
-				myMaskBead.maskElement(myContainer);
+				var newLabel:Label = new Label();
+				newLabel.text = "new";
+				myContainer.addElement(newLabel);
 			}
 			
 		]]>
 	</fx:Script>
+	
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
@@ -24,20 +25,14 @@
 	
 	<js:initialView>
 		<js:View width="100%" height="100%">
-			<js:Container width="100%" height="100%">
-				<ns:CompoundGraphic id="myCompoundGraphic">
-					<js:beads>
-						<ns:MaskBead id="myMaskBead"/>
-					</js:beads>
-					<ns:fill>
-						<js:SolidColor id="myFill" color="0x888888"/>
-					</ns:fill>
-				</ns:CompoundGraphic>
-				<ns:Rect width="100" height="100" x="0" y="0" id="myContainer">
-					<ns:fill>
-						<js:SolidColor color="0xFF0000"/>
-					</ns:fill>
-				</ns:Rect>
+			<js:Container width="200" height="200" id="myContainer">
+				<js:style>
+					<js:SimpleCSSStyles backgroundColor="red"/>
+				</js:style>
+				<js:beads>
+					<js:StyleInheritanceWithObserverBead styleName="backgroundColor"/>
+				</js:beads>
+				<js:TextButton text="hello" x="50" click="textbutton1_clickHandler(event)" y="50"/>
 			</js:Container>	
 		</js:View>
 	</js:initialView>
