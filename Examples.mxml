@@ -10,11 +10,13 @@
 	<js:initialView>
 		<js:View>
 			<ns:Rect x="300" y="300" width="100" height="100">
-				<ns:beads>
+				<ns:beads><!--
 					<ns:Filter/>
 					<ns:OffsetFilterElement dx="10" dy="10"/>
 					<ns:BlurFilterElement stdDeviation="3" blurResult="blurResult"/>
 					<ns:BlendFilterElement in2="blurResult"/> 
+				-->
+					<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3"/>
 				</ns:beads>
 				<ns:fill>
 					<js:SolidColor color="blue"/>
