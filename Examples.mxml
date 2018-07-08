@@ -11,16 +11,16 @@
 		<js:View>
 			<ns:Rect x="300" y="300" width="100" height="100">
 				<ns:beads>
-					<ns:Filter/>
+<!--					<ns:Filter/>
 					<ns:InvertFilterElement/>
 					<ns:OffsetFilterElement dx="10" dy="10"/>
-					<ns:BlurFilterElement stdDeviation="3" blurResult="blurResult"/>
-					<ns:ColorMatrixFilterElement colorMatrixResult="colorMatrixResult" red="255"/>
-					<ns:SpreadFilterElement spread="100" spreadResult="spreadResult"/> 
+					<ns:BlurFilterElement stdDeviation="3" result="blurResult"/>
+					<ns:ColorMatrixFilterElement result="colorMatrixResult" red="255"/>
+					<ns:SpreadFilterElement spread="100" result="spreadResult"/> 
 					<ns:CompositeFilterElement operator="in" in2="SourceAlpha" result="hi"/>
 					<ns:BlendFilterElement in2="SourceGraphic" in="hi"/>
-<!--					<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" green="255" opacity="0.5" blue="128" spread="2"/>
--->				</ns:beads>
+-->					<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" green="255" opacity="0.5" blue="128" spread="2" inset="false"/>
+				</ns:beads>
 				<ns:fill>
 					<js:SolidColor color="blue"/>
 				</ns:fill>
