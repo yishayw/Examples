@@ -19,7 +19,7 @@
 					<ns:SpreadFilterElement spread="100" result="spreadResult"/> 
 					<ns:CompositeFilterElement operator="in" in2="SourceAlpha" result="hi"/>
 					<ns:BlendFilterElement in2="SourceGraphic" in="hi"/>
--->					<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" green="255" opacity="0.5" blue="128" spread="2" inset="false"/>
+-->					<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" green="1" opacity="0.5" blue=".5" spread="2" inset="false"/>
 				</ns:beads>
 				<ns:fill>
 					<js:SolidColor color="blue"/>
