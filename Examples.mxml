@@ -9,17 +9,21 @@
 	
 	<js:initialView>
 		<js:View>
-			<ns:Rect x="300" y="300" width="100" height="100">
+			<ns:Rect x="0" y="0" width="100" height="100">
 				<ns:beads>
-<!--					<ns:Filter/>
-					<ns:InvertFilterElement/>
-					<ns:OffsetFilterElement dx="10" dy="10"/>
-					<ns:BlurFilterElement stdDeviation="3" result="blurResult"/>
-					<ns:ColorMatrixFilterElement result="colorMatrixResult" red="255"/>
-					<ns:SpreadFilterElement spread="100" result="spreadResult"/> 
-					<ns:CompositeFilterElement operator="in" in2="SourceAlpha" result="hi"/>
-					<ns:BlendFilterElement in2="SourceGraphic" in="hi"/>
--->					<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" green="1" opacity="0.5" blue=".5" spread="2" inset="false"/>
+					<!--<ns:Filter>
+						<ns:InvertFilterElement/>
+						<ns:OffsetFilterElement dx="10" dy="10"/>
+						<ns:BlurFilterElement stdDeviation="3" result="blurResult"/>
+						<ns:ColorMatrixFilterElement result="colorMatrixResult" red="255"/>
+						<ns:SpreadFilterElement spread="100" result="spreadResult"/> 
+						<ns:CompositeFilterElement operator="in" in2="SourceAlpha" result="hi"/>
+						<ns:BlendFilterElement in2="SourceGraphic" in="hi"/> 
+					</ns:Filter>-->
+					<ns:SuperimposeFilter>
+						<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" green="1" opacity="0.5" blue=".5" spread="2" inset="false"/>
+						<ns:DropShadowFilter dx="10" dy="10" stdDeviation="3" red="1" opacity="0.5" blue=".5" spread="2" inset="true"/>
+					</ns:SuperimposeFilter>
 				</ns:beads>
 				<ns:fill>
 					<js:SolidColor color="blue"/>
