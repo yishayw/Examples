@@ -4,26 +4,33 @@
 				>
 	<fx:Script>
 		<![CDATA[
-			import org.apache.royale.core.IFormatBead;
+			import org.apache.royale.events.MouseEvent;
+			import org.apache.royale.html.SimpleAlert;
 
-			private function dateChangedHandler():void
+			
+			protected function textbutton1_clickHandler(event:MouseEvent):void
 			{
-				var formatter:IFormatBead = df.getBeadByType(IFormatBead) as IFormatBead;
-				label.text = formatter.formattedString;
+//				validate(myTextInput.text);
+				var validator:Validator = new Validator();
+				var result:Boolean = validator.isValid(myTextInput.text);
+				SimpleAlert.show(result ? "Valid" : "Not", this);
 			}
+			
+			private function validate(text:String):void
+			{
+				
+			}
+			
 		]]>
 	</fx:Script>
-	<js:beads>
-		<js:ApplicationDataBinding/>
-	</js:beads>
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
-	
 	<js:initialView>
 		<js:View>
-			<js:DateField id="df" change="dateChangedHandler()"/>
-			<js:Label y="50" id="label"/>
+			<js:HGroup>
+				<js:TextInput id="myTextInput"/><js:TextButton text="Validate" click="textbutton1_clickHandler(event)"/>
+			</js:HGroup>
 		</js:View>
 	</js:initialView>
 </js:Application>

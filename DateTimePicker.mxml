@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdl:Dialog xmlns:fx="http://ns.adobe.com/mxml/2009"
+			xmlns:mdl="library://ns.apache.org/royale/mdl"
+			xmlns:js="library://ns.apache.org/royale/basic"
+			initComplete="onComplete()"
+			className="DateTimePicker" 
+			xmlns:components="com.printui.view.components.*">
+	<fx:Metadata>
+		[Event(name="accept", type="org.apache.royale.events.Event")]		
+	</fx:Metadata>	
+	<fx:Script>
+		<![CDATA[
+			import org.apache.royale.core.IBead;
+			import org.apache.royale.core.IFormatBead;
+			import org.apache.royale.core.IStrand;
+			import org.apache.royale.html.accessories.DateAndTimeFormatter;
+			import org.apache.royale.html.accessories.DateFormatDDMMYYYY;
+			import org.apache.royale.html.beads.models.DateChooserModel;
+
+//			public var textHolder:TextHolder;
+			private var _formatter:IFormatBead;
+			private var date:Date;
+
+			private function writeDate():void{
+				//textHolder.selectAll();
+				var formatter:IFormatBead = df.getBeadByType(IFormatBead) as IFormatBead;
+				//textHolder.replaceText(formatter.formattedString);
+				//textHolder.deselect();
+				close();
+			}
+			
+			private function get formatter():IFormatBead
+			{
+				if (!_formatter)
+				{
+					_formatter = df.getBeadByType(IFormatBead) as IFormatBead;
+				}
+				if (!_formatter)
+				{
+					_formatter = new DateAndTimeFormatter();
+					(_formatter as IStrand).addBead(new DateFormatDDMMYYYY());
+					df.addBead(_formatter);
+				}
+				return _formatter;
+			}
+
+			private function onComplete():void{
+				date = new Date(); 
+				myModel.selectedDate = date;
+				
+				dateDisplay.text = formatter.formattedString;
+				
+				hourSelect.value = date.getHours();
+				minSelect.value = date.getMinutes();
+				secSelect.value = date.getSeconds();
+//				myModel.dayNames = v2a(formatter.getWeekdayNames(DateTimeNameStyle.SHORT_ABBREVIATION));
+//				dateChooser.monthNames = v2a(formatter.getMonthNames(DateTimeNameStyle.FULL));
+//				dateChooser.firstDayOfWeek = formatter.getFirstWeekday();
+			}
+			
+			
+			private function get myModel():DateChooserModel
+			{
+				return df.model as DateChooserModel;
+			}
+
+			private function chooseDate():void{
+				date = myModel.selectedDate;
+				changeTime(false);
+			}
+
+			private function changeTime(throwEvent:Boolean=true):void{
+				date.setHours(hourSelect.value);
+				date.setMinutes(minSelect.value);
+				date.setSeconds(secSelect.value);
+				if (throwEvent)
+				{
+					myModel.dispatchEvent(new Event('selectedDateChanged'));
+				}
+				dateDisplay.text = formatter.formattedString;
+			}
+
+			private function cancelDate():void{
+				//textHolder.deselect();
+				close();
+			}
+		]]>
+		
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<mdl:beads>
+		<js:ContainerDataBinding/>
+	</mdl:beads>
+	<mdl:DialogTitle text="Select Time and Date" style="white-space: nowrap"/>
+<!--	<mdl:DialogTitle text="{LocaleManager.localeStrings.SELECT_TIME_AND_DATE}" style="white-space: nowrap"/>
+-->	<mdl:DialogContent style="margin-top: 22px">
+		<js:VContainer id="mainContainer">
+			<js:HContainer>
+				<js:NumericStepper id="hourSelect" width="40" maximum="23" minimum="0" valueChange="changeTime()"/>
+				<js:NumericStepper id="minSelect" width="40" maximum="59" minimum="0" valueChange="changeTime()"/>
+				<js:NumericStepper id="secSelect" width="40" maximum="59" minimum="0" valueChange="changeTime()"/>
+			</js:HContainer>
+			<js:DateChooser width="600" height="400" id="df" change="chooseDate()"/>
+			<js:Label id="dateDisplay"/>
+		</js:VContainer>
+	</mdl:DialogContent>
+	<mdl:DialogActions>
+		<mdl:Button text="Cancel" raised="true" click="cancelDate()"/>
+		<mdl:Button text="Accept" raised="true" click="writeDate()"/>
+	</mdl:DialogActions>
+</mdl:Dialog>
