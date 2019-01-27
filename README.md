@@ -1,3 +1,3 @@
 # Examples
 
-BevelFilter example. Two filters are superimposed to achieve the shadow effect.
+Example of a layout being determined in runtime.
