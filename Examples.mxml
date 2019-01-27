@@ -7,14 +7,16 @@
 		<![CDATA[
 			import org.apache.royale.events.Event;
 			import org.apache.royale.html.Button;
-			import org.apache.royale.html.beads.layouts.VerticalLayout;
+			import org.apache.royale.html.Container;
+			import org.apache.royale.html.beads.layouts.HorizontalLayout;
 			
 			protected function application1_applicationCompleteHandler(event:Event):void
 			{
-				myContainer.addBead(new VerticalLayout());
+				var myContainer:Container = new Container();
+				myContainer.addBead(new HorizontalLayout());
 				myContainer.addElement(new Button());
 				myContainer.addElement(new Button());
-				myContainer.dispatchEvent(new Event('layoutNeeded'));
+				myInitialView.addElement(myContainer);
 			}
 			
 		]]>
@@ -23,17 +25,8 @@
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
-	<fx:Style>
-		@namespace svg "library://ns.apache.org/royale/svg";
-		@namespace js "library://ns.apache.org/royale/basic";
-		js| Container  {
-			IBeadLayout: ClassReference(null);
-		}
-		
-	</fx:Style>
 	<js:initialView>
-		<js:View>
-			<js:Container id="myContainer" width="100" height="100"/>
+		<js:View id="myInitialView">
 		</js:View>
 	</js:initialView>
 </js:Application>
