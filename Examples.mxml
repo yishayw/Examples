@@ -2,6 +2,17 @@
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/royale/basic"
 				>
+	<fx:Script>
+		<![CDATA[
+			import org.apache.royale.events.MouseEvent;
+			
+			protected function textbutton1_clickHandler(event:MouseEvent):void
+			{
+				myBead.disabled = !myBead.disabled;
+			}
+			
+		]]>
+	</fx:Script>
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
@@ -9,7 +20,17 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:Label text="Hello World"/>	
+			<js:VContainer>
+				<js:TextButton text="Toggle Disable" click="textbutton1_clickHandler(event)"/>
+				<js:Spacer height="200"/>
+				<js:TextButton text="Hello World" width="130" height="140">
+					<js:beads>
+						<js:DisableBead id="myBead" disabled="true"/>
+						<js:DisabledAlphaBead disabledAlpha="0.2"/>
+						<js:DisableLoaderBead/>
+					</js:beads>
+				</js:TextButton>
+			</js:VContainer>
 		</js:View>
 	</js:initialView>
 </js:Application>
