@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+				applicationComplete="application1_applicationCompleteHandler(event)"
 				xmlns:js="library://ns.apache.org/royale/basic"
 				>
 	<fx:Script>
 		<![CDATA[
-			import org.apache.royale.events.MouseEvent;
-			
-			protected function textbutton1_clickHandler(event:MouseEvent):void
+			import org.apache.royale.events.Event;
+
+			protected function application1_applicationCompleteHandler(event:Event):void
 			{
-				myBead.disabled = !myBead.disabled;
+				var dp:Array = [];
+				for (var i:int = 0; i < 30; i++)
+				{
+					var color:uint = uint(Math.random() * 0xFFFFFF);
+					dp.push(color);
+				}
+				myColorPicker.dataProvider = dp;
 			}
 			
 		]]>
@@ -20,17 +27,8 @@
 	
 	<js:initialView>
 		<js:View>
-			<js:VContainer>
-				<js:TextButton text="Toggle Disable" click="textbutton1_clickHandler(event)"/>
-				<js:Spacer height="200"/>
-				<js:TextButton text="Hello World" width="130" height="140">
-					<js:beads>
-						<js:DisableBead id="myBead" disabled="true"/>
-						<js:DisabledAlphaBead disabledAlpha="0.2"/>
-						<js:DisableLoaderBead/>
-					</js:beads>
-				</js:TextButton>
-			</js:VContainer>
+			<js:ColorPicker id="myColorPicker" width="100" height="100">
+			</js:ColorPicker>
 		</js:View>
 	</js:initialView>
 </js:Application>
