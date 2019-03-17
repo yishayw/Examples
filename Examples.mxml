@@ -21,6 +21,9 @@
 	<js:initialView>
 		<js:View>
 			<js:VContainer>
+				<js:style>
+					<js:SimpleCSSStyles padding="200"/>
+				</js:style>
 				<js:TextButton text="Toggle Disable" click="textbutton1_clickHandler(event)"/>
 				<js:Spacer height="200"/>
 				<js:TextButton text="Hello World" width="130" height="140">
