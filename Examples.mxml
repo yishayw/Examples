@@ -5,7 +5,8 @@
 				>
 	<fx:Script>
 		<![CDATA[
-			import org.apache.royale.events.Event;
+			import org.apache.royale.html.Container;
+			private var newContainer:Container;
 
 			protected function application1_applicationCompleteHandler(event:Event):void
 			{
@@ -15,7 +16,17 @@
 					var color:uint = uint(Math.random() * 0xFFFFFF);
 					dp.push(color);
 				}
-				myColorPicker.dataProvider = dp;
+				arrayColorSelectionModel.dataProvider = dp;
+			}
+			
+			private function changeHandler():void
+			{
+//				myColorSpectrum.baseColor = uint(myColorPicker.selectedItem);
+			}
+
+			private function newColorHandler():void
+			{
+				
 			}
 			
 		]]>
@@ -26,8 +37,12 @@
 	</js:valuesImpl>	
 	
 	<js:initialView>
-		<js:View>
-			<js:ColorPicker id="myColorPicker" width="100" height="100">
+		<js:View id="myView">
+			<js:ColorPicker color="0xFF0000" change="changeHandler()" id="myColorPicker">
+				<js:beads>
+					<js:ArrayColorSelectionModel id="arrayColorSelectionModel"/>
+					<js:ColorPickerPopUpWithPalette/>
+				</js:beads>
 			</js:ColorPicker>
 		</js:View>
 	</js:initialView>
