@@ -39,9 +39,9 @@
 	
 	<js:initialView>
 		<js:View id="myView">
-			<js:ColorPicker id="myColorPicker">
+			<js:ColorPicker change="changeHandler()" id="myColorPicker">
 				<js:beads>
-					<js:ArrayColorSelectionModel change="changeHandler()" id="arrayColorSelectionModel"/>
+					<js:ArrayColorSelectionModel id="arrayColorSelectionModel"/>
 					<js:ColorPickerPopUpWithPalette/>
 				</js:beads>
 			</js:ColorPicker>
