@@ -2,6 +2,7 @@
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				applicationComplete="application1_applicationCompleteHandler(event)"
 				xmlns:js="library://ns.apache.org/royale/basic"
+				xmlns:local="*"
 				>
 	<fx:Script>
 		<![CDATA[
@@ -42,7 +43,7 @@
 			<js:ColorPicker change="changeHandler()" id="myColorPicker">
 				<js:beads>
 					<js:ArrayColorSelectionModel id="arrayColorSelectionModel"/>
-					<js:ColorPickerPopUpWithPalette/>
+					<local:ColorPickerPopUpWithPalette/>
 				</js:beads>
 			</js:ColorPicker>
 		</js:View>
