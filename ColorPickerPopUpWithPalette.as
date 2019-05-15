@@ -6,6 +6,7 @@ package
 	import org.apache.royale.html.beads.layouts.TileLayout;
 	import org.apache.royale.html.supportClasses.ColorPalette;
 	import org.apache.royale.html.supportClasses.ColorPickerPopUp;
+	import org.apache.royale.core.IColorSpectrumModel;
 	import org.apache.royale.utils.loadBeadFromValuesManager;
 
 	public class ColorPickerPopUpWithPalette extends ColorPickerPopUp
@@ -45,7 +46,8 @@ package
 		
 		private function changeHandler(event:org.apache.royale.events.Event):void
 		{
-			colorSpectrum.baseColor = colorPalette.selectedItem as Number;
+			var model:IColorSpectrumModel = colorSpectrum.model as IColorSpectrumModel;
+			model.baseColor = model.hsvModifiedColor = colorPalette.selectedItem as Number;
 		}
 	}
 }
