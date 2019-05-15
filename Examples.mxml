@@ -18,7 +18,6 @@
 					dp.push(color);
 				}
 				arrayColorSelectionModel.dataProvider = dp;
-				arrayColorSelectionModel.color = uint(dp[0]);
 			}
 			
 			private function changeHandler():void
@@ -44,6 +43,7 @@
 				<js:beads>
 					<js:ArrayColorSelectionModel id="arrayColorSelectionModel"/>
 					<local:ColorPickerPopUpWithPalette/>
+					<js:ColorPickerWithEmptyView/>
 				</js:beads>
 			</js:ColorPicker>
 		</js:View>
