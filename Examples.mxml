@@ -9,15 +9,25 @@
 			
 			protected function application1_applicationCompleteHandler(event:Event):void
 			{
-				var a:String = myXml.toString();
+				myService.send();
+			}
+			
+			protected function myService_completeHandler(event:Event):void
+			{
+				var a:String = myService.data;
 				trace("a: " + a);
+				XML.ignoreWhitespace = false;
+				var b:XML = new XML(a);
+				trace("b: " + b.toString());
+				var children:XMLList = b.children();
+				trace("c: " + children.toString());
 			}
 			
 		]]>
 	</fx:Script>
-	<fx:Declarations>
-		<fx:XML id="myXml" source="my.xml"/>
-	</fx:Declarations>
+	<js:beads>
+		<js:HTTPService id="myService" url="http://localhost:3001/assets/my.xml" complete="myService_completeHandler(event)"/>
+	</js:beads>
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
