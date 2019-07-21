@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-				xmlns:js="library://ns.apache.org/flexjs/basic"
+				applicationComplete="application1_applicationCompleteHandler(event)"
+				xmlns:js="library://ns.apache.org/royale/basic"
 				>
 	<fx:Declarations>
 		<js:FileProxy id="myFileProxy" modelChanged="modelChangedHandler(event)">
 			<js:beads>
 				<js:FileModelWithParams id="myModel"/>
 				<js:FileBrowser id="myBrowser"/>
-				<js:FileLoader id="myLoaderAndUploader"/>
+				<js:FileLoaderAndUploader id="myLoaderAndUploader"/>
 			</js:beads>
 		</js:FileProxy>
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-			import org.apache.flex.events.Event;
-			import org.apache.flex.events.MouseEvent;
-			import org.apache.flex.file.beads.FileModel;
-			import org.apache.flex.html.SimpleAlert;
+			import org.apache.royale.events.Event;
+			import org.apache.royale.events.IEventDispatcher;
+			import org.apache.royale.events.MouseEvent;
+			import org.apache.royale.file.beads.FileModel;
+			import org.apache.royale.html.SimpleAlert;
 			private var url:String = "http://google.com";
 			
-			protected function clickHandler(event:org.apache.flex.events.MouseEvent):void
+			protected function clickHandler(event:org.apache.royale.events.MouseEvent):void
 			{
 				myBrowser.browse();
 			}
 			
-			protected function modelChangedHandler(event:org.apache.flex.events.Event):void
+			protected function modelChangedHandler(event:org.apache.royale.events.Event):void
 			{
-				myModel.setProperty("myFileName", myModel.name);
-				myModel.setProperty("mySomeProp", "someValue");
+				myModel.setParam("myFileName", myModel.name);
+				myModel.setParam("mySomeProp", "someValue");
 				myLoaderAndUploader.upload(url);
 			}
 			
-			private function blobChangedHandler(e:org.apache.flex.events.Event):void
+			private function blobChangedHandler(e:org.apache.royale.events.Event):void
 			{
-				var fileModel:FileModel = myFileProxy.model as FileModel;
-				SimpleAlert.show(fileModel.blob.length + " bytes of " + fileModel.name + " were loaded", this);
+				myModel.setParam("fileContentSize", myModel.size);
+				trace("size: " + myModel.size);
+			}
+			
+			protected function application1_applicationCompleteHandler(event:Event):void
+			{
+				myModel.addEventListener("blobChanged", blobChangedHandler);
 			}
 			
 		]]>
