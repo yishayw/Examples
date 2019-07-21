@@ -5,8 +5,9 @@
 	<fx:Declarations>
 		<js:FileProxy id="myFileProxy" modelChanged="modelChangedHandler(event)">
 			<js:beads>
+				<js:FileModelWithParams id="myModel"/>
 				<js:FileBrowser id="myBrowser"/>
-				<js:FileLoader id="myLoader"/>
+				<js:FileLoader id="myLoaderAndUploader"/>
 			</js:beads>
 		</js:FileProxy>
 	</fx:Declarations>
@@ -16,6 +17,7 @@
 			import org.apache.flex.events.MouseEvent;
 			import org.apache.flex.file.beads.FileModel;
 			import org.apache.flex.html.SimpleAlert;
+			private var url:String = "http://google.com";
 			
 			protected function clickHandler(event:org.apache.flex.events.MouseEvent):void
 			{
@@ -24,9 +26,9 @@
 			
 			protected function modelChangedHandler(event:org.apache.flex.events.Event):void
 			{
-				myFileProxy.model.addEventListener("blobChanged", blobChangedHandler);
-				trace('loading: ' +  myFileProxy.name);
-				myLoader.load();
+				myModel.setProperty("myFileName", myModel.name);
+				myModel.setProperty("mySomeProp", "someValue");
+				myLoaderAndUploader.upload(url);
 			}
 			
 			private function blobChangedHandler(e:org.apache.flex.events.Event):void
