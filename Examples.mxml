@@ -33,6 +33,7 @@
 			dp.push("Item 21");
 			dp.push("Item 22");
 			myList1.dataProvider = dp;
+			myList2.dataProvider = [];
 		}
 		]]>
 	</fx:Script>
@@ -44,13 +45,13 @@
 			<js:HContainer width="1200">
 				<js:MultiSelectionList id="myList1" width="600" height="400">
 					<js:beads>
-						<js:SingleSelectionDragSourceBead dragType="copy" />
-						<js:SingleSelectionDragImageBead />
+						<js:MultiSelectionDragSourceBead dragType="move" />
+						<js:MultiSelectionDragImageBead />
 					</js:beads>
 				</js:MultiSelectionList>
 				<js:MultiSelectionList id="myList2" width="600" height="400">
 					<js:beads>
-						<js:SingleSelectionDropTargetBead />
+						<js:SensitiveMultiSelectionDropTargetBead />
 						<js:SingleSelectionDropIndicatorBead />
 					</js:beads>
 				</js:MultiSelectionList>
