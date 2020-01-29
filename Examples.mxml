@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <js:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 				xmlns:js="library://ns.apache.org/royale/basic"
+                xmlns:local="*"
+                applicationComplete="applicationCompleteHandler(event)" 
 				>
+    <fx:Script>
+        <![CDATA[
+
+            import org.apache.royale.events.Event;
+            import org.apache.royale.events.MouseEvent;
+
+	    private function clickHandler(e:MouseEvent):void
+	    {
+		   myList.dataProvider = ["One", "Three"];
+		   myList.model.dispatchEvent(new Event("dataProviderChanged"));
+	   }
+        private function applicationCompleteHandler(event:Event):void
+	{
+	   myList.dataProvider = ["One", "Two", "Three"];
+	   myList.model.dispatchEvent(new Event("dataProviderChanged"));
+	    myButton.addEventListener("click", clickHandler);
+	    }
+            
+	]]>
+    </fx:Script>
 	
 	<js:valuesImpl>
 		<js:SimpleCSSValuesImpl />
 	</js:valuesImpl>	
 	
 	<js:initialView>
-		<js:View>
-			<js:Label text="Hello World"/>	
-		</js:View>
+            <js:View>
+		    <js:VContainer>
+			    <js:TextButton text="click" id="myButton"/>
+			    <js:List id="myList" width="400" height="400">
+				    <js:itemRenderer>
+					    <fx:Component>
+						    <local:MyRenderer/>
+					    </fx:Component>
+				    </js:itemRenderer>
+			    </js:List>
+		    </js:VContainer>
+            </js:View>
 	</js:initialView>
 </js:Application>
