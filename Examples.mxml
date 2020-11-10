@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application creationComplete="init()"
+<s:Application 
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.apache.org/royale/spark"
 	xmlns:collapsiblepanel="cc.sitemaker.common.views.collapsiblepanel.*"
@@ -9,18 +9,27 @@
 		<![CDATA[
 			
 			import cc.sitemaker.assets.ToolbarIcons;
-
-			private function init():void
-			{
-			}
 		]]>
-	</fx:Script>
+	</fx:Script>		
 	<collapsiblepanel:CollapsiblePanelGroup width="100%" height="100%">
 		<collapsiblepanel:CollapsiblePanel
 			title="ARRANGE"
 			position="top"
 			open="false"
-			>
+			id="arrange">
+			<sidelink:SideLink
+				label="SEND_TO_BACK"
+				action="SEND_OBJECT_TO_BACK"
+				/>
+		</collapsiblepanel:CollapsiblePanel>
+	</collapsiblepanel:CollapsiblePanelGroup>
+			
+	<!--<collapsiblepanel:CollapsiblePanelGroup width="100%" height="100%">
+		<collapsiblepanel:CollapsiblePanel
+			title="ARRANGE"
+			position="top"
+			open="false"
+			id="arrange">
 			<sidelink:SideLink
 				label="SEND_TO_BACK"
 				action="SEND_OBJECT_TO_BACK"
@@ -85,7 +94,7 @@
 						useHandCursor="true"
 						/>
 				</s:HGroup>
-				<s:HGroup>
+	<!--			<s:HGroup>
 					<s:Image
 						id="alignTop"
 						x="0"
@@ -124,10 +133,10 @@
 					bottom="6"
 					label="ALIGN_TO_PAGE"	
 					>
-					<!-- <s:label>@Resource(bundle='Edit',key='ALIGN_TO_PAGE')</s:label> -->
+					<!-- <s:label>@Resource(bundle='Edit',key='ALIGN_TO_PAGE')</s:label> 
 				</s:CheckBox>
 			</s:VGroup>
-		</collapsiblepanel:CollapsiblePanel>
+		</collapsiblepanel:CollapsiblePanel
 
 		<collapsiblepanel:CollapsiblePanel
 			title="SIDEBAR_EDIT_DISTRIBUTE"
@@ -207,8 +216,8 @@
 				label="CLEAR_GUIDES"
 				action="CLEAR_GUIDES"
 				/>
-		</collapsiblepanel:CollapsiblePanel>
-
+		</collapsiblepanel:CollapsiblePanel>-->
+<!--
 		<collapsiblepanel:CollapsiblePanel
 			id="preferencesPanel"
 			title="PREFERENCES"
@@ -241,7 +250,7 @@
 					width="100%"
 					/>
 			</s:Group>
-			<!-- <local:Separator id="lastSeparator" /> -->
+			 <local:Separator id="lastSeparator" /> 
 			<sidelink:SideLink
 				id="viewHtmlVersionButton"
 				label="VIEW_HTML"
@@ -250,7 +259,7 @@
 			<s:VGroup id="switchToolbar">
 				<!-- <local:Separator condition.containerReady="TOOLBAR_SWITCHABLE" /> -->
 				<!-- <local:Separator/> -->
-				<sidelink:SideLink
+				<!--<sidelink:SideLink
 					label="BASIC_TOOLBAR"
 					action="SWITCH_VIEW_BASIC"
 					/>
@@ -260,6 +269,6 @@
 					/>
 			</s:VGroup>
 
-		</collapsiblepanel:CollapsiblePanel>
-	</collapsiblepanel:CollapsiblePanelGroup>
+
+	</collapsiblepanel:CollapsiblePanelGroup>-->
 </s:Application>

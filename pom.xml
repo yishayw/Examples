@@ -14,7 +14,7 @@
 	 Inject,
 	 SkinPart,
 	 PostConstruct,
-	 PreDestroy;
+	 PreDestroy
 	</royale.keepAS3MetaData>
 	<local.config>
 		  -locale=en_GB;
