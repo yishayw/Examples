@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cc.sitemaker</groupId>
+  <artifactId>SparkHelloWorld</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>swf</packaging>
+
+  <name>SparkHelloWorld</name>
+	
+ <properties>
+	 <royale.keepAS3MetaData>-keep-as3-metadata+=
+	 Inject,
+	 SkinPart,
+	 PostConstruct,
+	 PreDestroy;
+	</royale.keepAS3MetaData>
+	<local.config>
+		  -locale=en_GB;
+		  -compiler.source-path+=c:/dev/flexsm5/sm5/prepare/build/lib/flexsdk/frameworks/projects/spark/bundles/{locale};
+		  -verbose=false;
+		  -js-dynamic-access-unknown-members=true; ${royale.keepAS3MetaData}
+	      </local.config>
+  </properties>
+  <build>
+    <sourceDirectory>.</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.royale.compiler</groupId>
+        <artifactId>royale-maven-plugin</artifactId>
+ 		<version>0.9.8-SNAPSHOT</version>
+        <extensions>true</extensions>
+        <configuration>
+          <mainClass>Examples.mxml</mainClass>
+          <targets>JSRoyale</targets>
+          <debug>true</debug>
+		  <allowSubclassOverrides>true</allowSubclassOverrides>
+		  <additionalCompilerOptions>
+			  ${local.config}
+		  </additionalCompilerOptions>
+        </configuration>
+		<dependencies>
+			  <dependency>
+				<groupId>org.apache.royale.compiler</groupId>
+				<artifactId>compiler-jx</artifactId>
+				<version>0.9.8-SNAPSHOT</version>
+			  </dependency>
+		</dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+	<dependency>
+      <groupId>org.apache.royale.framework</groupId>
+      <artifactId>Language</artifactId>
+      <version>0.9.8-SNAPSHOT</version>
+      <type>swc</type>
+       <classifier>js</classifier>
+    </dependency>
+     <dependency>
+        <groupId>org.apache.royale.framework</groupId>
+        <artifactId>SparkRoyale</artifactId>
+        <version>0.9.8-SNAPSHOT</version>
+        <type>swc</type>
+        <classifier>js</classifier>
+    </dependency>
+
+      <dependency>
+          <groupId>com.yell.sitemaker</groupId>
+          <artifactId>sitemaker-common-assets</artifactId>
+          <version>0.1.0-SNAPSHOT</version>
+          <type>swc</type>
+          <classifier>js</classifier>
+      </dependency>
+    <dependency>
+          <groupId>com.yell.sitemaker</groupId>
+          <artifactId>common</artifactId>
+          <version>0.1.0-SNAPSHOT</version>
+          <type>swc</type>
+          <classifier>js</classifier>
+      </dependency>
+  </dependencies>
+
+</project>
