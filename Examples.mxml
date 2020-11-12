@@ -4,16 +4,5 @@
 	xmlns:s="library://ns.apache.org/royale/spark"
 	xmlns:comp="components.*"
 	>
-	<fx:Style source="app-styles.css" />
-	<fx:Script>
-		<![CDATA[
-		]]>
-	</fx:Script>		
-	<comp:CollapsiblePanel
-		title="ARRANGE"
-		position="top"
-		open="false"
-		id="arrange">
-		<s:Group width="100%" height="200" style="background-color: blue"/>
-	</comp:CollapsiblePanel>
+	<comp:CollapsiblePanel/>
 </s:Application>
