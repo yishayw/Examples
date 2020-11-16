@@ -6,8 +6,7 @@
 	>
 
 	<fx:Metadata>
-		/** [HostComponent("components.CollapsiblePanel")] */
-		[HostComponent("spark.components.Button")]
+		[HostComponent("components.CollapsiblePanel")]
 	</fx:Metadata>
 
 	<fx:Script>
@@ -30,7 +29,6 @@
 			{
 				return contentFill
 			}
-			;
 		]]>
 	</fx:Script>
 
