@@ -18,19 +18,6 @@
 	</s:states>
 
 	<s:Button id="header" top="0" left="0" right="0" height="24" />
+	<s:Group id="contentGroup" top="25" bottom="0" includeInLayout.closed="false" includeInLayout="true" width="100%"/> 
 
-	<s:Scroller
-		id="contentParent"
-		left="1"
-		right="0"
-		top="24"
-		bottom="1"
-		bottom.bottom="4"
-		includeInLayout="true"
-		includeInLayout.closed="false"
-		visible="true"
-		visible.closed="false"
-		>
-		<s:Group id="contentGroup" width="100%" height="100%" minWidth="0" minHeight="0"/> 
-	</s:Scroller>
 </s:SparkSkin>
