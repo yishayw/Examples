@@ -2,6 +2,8 @@
 <s:Application 
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.apache.org/royale/spark"
+	width="100%"
+	height="100%"
 	xmlns:comp="components.*"
 	>
 	<fx:Style source="app-styles.css" />
@@ -10,8 +12,6 @@
 		]]>
 	</fx:Script>		
 	<comp:CollapsiblePanel
-		title="ARRANGE"
-		position="top"
 		open="false"
 		id="arrange">
 		<s:Group width="100%" height="200" style="background-color: blue"/>
