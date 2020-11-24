@@ -1,5 +1,3 @@
 # Examples
 
-HelloWorld in Apache Royale. Shows a label.
-
-Browse branches to see what examples are available. Make pull requests, open issues, become collaborators to get this effort going.
+Minimal app to test things such as skin layout, transitions, and states in Royale. Contains a FlexExample subfolder that can be run as reference to what this should look like.
