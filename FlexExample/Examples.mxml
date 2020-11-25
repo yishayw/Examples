@@ -3,20 +3,21 @@
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.adobe.com/flex/spark"
 	xmlns:mx="library://ns.adobe.com/flex/mx"
-	xmlns:comp="components.*"
 	>
-	
 	<fx:Script>
 		<![CDATA[
-			
-			//import cc.sitemaker.assets.ToolbarIcons;
+			private function onClick():void
+			{
+				myGroup.height = myGroup.height == 20 ? 200 : 20;
+				myVbox.height = myGroup.height;
+			}
+
 		]]>
 	</fx:Script>		
-	<comp:CollapsiblePanel
-		title="ARRANGE"
-		position="top"
-		open="false"
-		id="arrange">
-		<s:Group width="100%" height="200"/>
-	</comp:CollapsiblePanel>
+	<mx:ViewStack resizeToContent="true" width="100%" id="myViewStack">
+		<s:NavigatorContent width="100%" id="myVbox">
+			<s:BorderContainer id="myGroup" width="100%" height="20" backgroundColor="blue" />
+		</s:NavigatorContent>
+	</mx:ViewStack>
+	<s:Button click="onClick()" label="Click" bottom="0"/>
 </s:Application>
