@@ -7,13 +7,13 @@
 	<fx:Style source="app-styles.css" />
 	<fx:Script>
 		<![CDATA[
+			private function changeHandler(event:ValueChangeEvent):void
+			{
+				trace(event);
+			}
 		]]>
 	</fx:Script>		
-	<comp:CollapsiblePanel
-		title="ARRANGE"
-		position="top"
-		open="false"
-		id="arrange">
-		<s:Group width="100%" height="200" style="background-color: blue"/>
-	</comp:CollapsiblePanel>
+	<comp:Ribbon2 id="ribbon" change="changeHandler(event)">
+		<comp:RibbonButton2 label="Button1" id="button1"/>
+	</comp:Ribbon2>
 </s:Application>
