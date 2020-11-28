@@ -1,19 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
-<s:Application 
-	xmlns:fx="http://ns.adobe.com/mxml/2009"
+<?xml version="1.0"?>
+<!-- Simple example to demonstrate the Spark ButtonBar -->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+	creationComplete="init()"
 	xmlns:s="library://ns.apache.org/royale/spark"
-	xmlns:comp="components.*"
-	>
-	<fx:Style source="app-styles.css" />
-	<fx:Script>
-		<![CDATA[
-			private function changeHandler(event:ValueChangeEvent):void
-			{
-				trace(event);
-			}
-		]]>
-	</fx:Script>		
-	<comp:Ribbon2 id="ribbon" change="changeHandler(event)">
-		<comp:RibbonButton2 label="Button1" id="button1"/>
-	</comp:Ribbon2>
+	xmlns:js="library://ns.apache.org/royale/basic"
+	xmlns:mx="library://ns.apache.org/royale/mx"
+       	>
+
+
+    <fx:Script>
+    <![CDATA[
+         import spark.events.IndexChangeEvent; 
+         import org.apache.royale.collections.ArrayList;
+         import mx.collections.ArrayCollection;
+
+	 private function init():void
+	{
+		viewMenu.dataProvider = ['Home', 'Rooms', 'Dining'];
+	}
+
+         private function changeSelection(event:Event): void {
+             selectionText.text = "Selected Item: " + ButtonBar(event.target).selectedItem;
+         }
+    ]]>
+    </fx:Script>
+    
+        <s:Group x="10" y="40" ><js:ButtonBar id="viewMenu" width="320"
+                change="changeSelection(event)"/></s:Group>
+        <s:Label x="10" y="75" id="selectionText" />
 </s:Application>
