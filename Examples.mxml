@@ -3,7 +3,6 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 	creationComplete="init()"
 	xmlns:s="library://ns.apache.org/royale/spark"
-	xmlns:js="library://ns.apache.org/royale/basic"
 	xmlns:mx="library://ns.apache.org/royale/mx"
        	>
 
@@ -11,21 +10,20 @@
     <fx:Script>
     <![CDATA[
          import spark.events.IndexChangeEvent; 
-         import org.apache.royale.collections.ArrayList;
          import mx.collections.ArrayCollection;
 
 	 private function init():void
 	{
-		viewMenu.dataProvider = ['Home', 'Rooms', 'Dining'];
+		viewMenu.dataProvider = new ArrayCollection(['Home', 'Rooms', 'Dining']);
 	}
 
-         private function changeSelection(event:Event): void {
+         private function changeSelection(event:IndexChangeEvent): void {
              selectionText.text = "Selected Item: " + ButtonBar(event.target).selectedItem;
          }
     ]]>
     </fx:Script>
-    
-        <s:Group x="10" y="40" ><js:ButtonBar id="viewMenu" width="320"
-                change="changeSelection(event)"/></s:Group>
+        <s:ButtonBar id="viewMenu" requireSelection="false" x="10" y="40" width="320"
+		skinClass="components.MySkin"
+                change="changeSelection(event)"/>
         <s:Label x="10" y="75" id="selectionText" />
 </s:Application>
