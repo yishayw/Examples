@@ -18,12 +18,11 @@
 	}
 
          private function changeSelection(event:IndexChangeEvent): void {
-             selectionText.text = "Selected Item: " + ButtonBar(event.target).selectedItem;
+             selectionText.text = "Selected Item: " + TabBar(event.target).selectedItem;
          }
     ]]>
     </fx:Script>
-        <s:ButtonBar id="viewMenu" requireSelection="false" x="10" y="40" width="320"
-		skinClass="components.MySkin"
+        <s:TabBar id="viewMenu" requireSelection="false" x="10" y="40" width="320"
                 change="changeSelection(event)"/>
         <s:Label x="10" y="75" id="selectionText" />
 </s:Application>
