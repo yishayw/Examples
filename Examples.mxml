@@ -9,7 +9,7 @@
 			private function onClick():void
 			{
 				myViewStack.invalidateSize();
-				myViewStack.selectedChild = myVbox2;
+				myViewStack.selectedChild = myViewStack.selectedChild == myVbox1 ? myVbox2: myVbox1;
 			}
 
 		]]>
@@ -19,7 +19,7 @@
 			<s:Group id="myGroup1" width="100%" height="20" style="background-color: blue"/>
 		</mx:VBox>
 		<mx:VBox width="100%" id="myVbox2">
-			<s:Group id="myGroup2" width="100%" height="20" style="background-color: red"/>
+			<s:Group id="myGroup2" width="100%" height="220" style="background-color: red"/>
 		</mx:VBox>
 	</mx:ViewStack>
 	<s:Button click="onClick()" label="Click" bottom="0"/>
