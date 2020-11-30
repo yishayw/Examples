@@ -2,6 +2,7 @@
 <s:Application 
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.apache.org/royale/spark"
+	xmlns:mx="library://ns.apache.org/royale/mx"
 	xmlns:comp="components.*"
 	>
 	<fx:Style source="app-styles.css" />
@@ -9,11 +10,18 @@
 		<![CDATA[
 		]]>
 	</fx:Script>		
-	<comp:CollapsiblePanel
-		title="ARRANGE"
-		position="top"
-		open="false"
-		id="arrange">
-		<s:Group width="100%" height="200" style="background-color: blue"/>
-	</comp:CollapsiblePanel>
+	<mx:VBox width="100%" height="100%">
+		<comp:CollapsiblePanel
+			title="ARRANGE"
+			position="top"
+			open="false">
+			<s:Group width="100%" height="200" style="background-color: blue"/>
+		</comp:CollapsiblePanel>
+		<comp:CollapsiblePanel
+			title="ARRANGE"
+			position="top"
+			open="false">
+			<s:Group width="100%" height="200" style="background-color: red"/>
+		</comp:CollapsiblePanel>
+	</mx:VBox>
 </s:Application>
