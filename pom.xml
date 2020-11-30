@@ -18,7 +18,7 @@
 	</royale.keepAS3MetaData>
 	<local.config>
 		  -locale=en_GB;
-		  -compiler.source-path+=c:/dev/flexsm5/sm5/prepare/build/lib/flexsdk/frameworks/projects/spark/bundles/{locale};
+		  -compiler.source-path+=c:/dev/flex-sdk/frameworks/projects/spark/bundles/{locale};
 		  -verbose=false;
 		  -js-dynamic-access-unknown-members=true; ${royale.keepAS3MetaData}
 	      </local.config>
