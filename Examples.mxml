@@ -10,7 +10,7 @@
 		<![CDATA[
 		]]>
 	</fx:Script>		
-	<mx:VBox width="100%" height="100%">
+	<mx:VBox width="100%">
 		<comp:CollapsiblePanel
 			title="ARRANGE"
 			position="top"
