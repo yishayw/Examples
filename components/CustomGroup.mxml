@@ -9,7 +9,7 @@
 		<![CDATA[
 		]]>
 	</fx:Script>		
-	<s:Group width="100%">
+	<s:VGroup width="100%">
 		<comp:CollapsiblePanel
 			title="ARRANGE"
 			position="top"
@@ -32,5 +32,5 @@
 				<s:RadioButton label="Radio Box 4"/>
 			</s:VGroup>
 		</comp:CollapsiblePanel>
-	</s:Group>
+	</s:VGroup>
 </s:Group>
