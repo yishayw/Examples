@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group width="100%"
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.apache.org/royale/spark"
+	xmlns:comp="components.*"
+	xmlns:mx="library://ns.apache.org/royale/mx"
+	>
+	<fx:Script>
+		<![CDATA[
+		]]>
+	</fx:Script>		
+	<s:Group width="100%">
+		<comp:CollapsiblePanel
+			title="ARRANGE"
+			position="top"
+			open="false">
+			<s:VGroup width="100%">
+				<s:CheckBox label="Check Box 1"/>
+				<s:CheckBox label="Check Box 2"/>
+				<s:CheckBox label="Check Box 3"/>
+				<s:CheckBox label="Check Box 4"/>
+			</s:VGroup>
+		</comp:CollapsiblePanel>
+		<comp:CollapsiblePanel
+			title="ARRANGE"
+			position="top"
+			open="false">
+			<s:VGroup width="100%">
+				<s:RadioButton label="Radio Box 1"/>
+				<s:RadioButton label="Radio Box 2"/>
+				<s:RadioButton label="Radio Box 3"/>
+				<s:RadioButton label="Radio Box 4"/>
+			</s:VGroup>
+		</comp:CollapsiblePanel>
+	</s:Group>
+</s:Group>
