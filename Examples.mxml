@@ -13,6 +13,7 @@
 			{
 				var myGroup:Group = new Group();
 				myGroup.percentWidth = 100;
+				// swap order of following 2 lines to get an infinite layout loop
 				as3.addChild(myGroup);
 				myGroup.addChild(new CustomGroup());
 			}
