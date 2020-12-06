@@ -10,34 +10,14 @@
 		<![CDATA[
 			private function init():void
 			{
-				//SITE_ALIGNMENT.label = "SITE_ALIGNMENT";
-				//SITE_MARGINS.label = "SITE_MARGINS";
-				//SITE_SIZE.label = "SITE_SIZE";
-				//DEFAULT_FONT_STYLE.label = "DEFAULT_FONT_STYLE";	
+				label1.label = "label1";
+				label2.label = "label2";
 			}
 
 		]]>
 	</fx:Script>		
 	<s:VGroup id="myLayout">
-		<comp:SideLink 
-			id="DEFAULT_FONT_STYLE"
-			label="DEFAULT_FONT_STYLE"
-			/>
-		<comp:SideLink 
-			id="SITE_SIZE"
-			label="SITE_SIZE"
-			/>
-		<comp:SideLink 
-			id="SITE_MARGINS"
-			label="SITE_MARGINS"
-			/>
-		<comp:SideLink 
-			id="SITE_ALIGNMENT"
-			label="SITE_ALIGNMENT"
-			/>
-		<comp:SideLink 
-			id="BORDER_ICON"
-			label="BORDER_ICON"
-			/>
+		<comp:SideLink id="label1"/>
+		<comp:SideLink id="label2"/>
 	</s:VGroup>
 </s:Application>
