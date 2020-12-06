@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:mx="library://ns.apache.org/royale/mx"
+	xmlns:s="library://ns.apache.org/royale/spark"
+	rollOver="onRollOver()"
+	rollOut="onRollOut()"
+	buttonMode="true"
+	useHandCursor="true"
+	>
+
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			public var label:String;
+			
+			[Bindable]
+			public var icon:Object;
+			
+			[Bindable]
+			public var action:String;
+			
+			[Bindable]
+			public var context:String;
+			
+			[Bindable]
+			public var isModuleView:Boolean;
+			
+			[Bindable]
+			public var includeIconLayout:Boolean = true;
+
+			protected function onRollOver() : void
+			{
+				currentState = 'over';
+			}
+
+			protected function onRollOut() : void
+			{
+				currentState = 'up';
+			}
+
+			public function get condition() : String
+			{
+				return "";
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+	</s:states>
+
+	<s:layout>
+		<s:BasicLayout />
+	</s:layout>
+
+	<s:BitmapImage
+		id="iconImg"
+		source="{ icon }"
+		y="0"
+		verticalCenter="1"
+		/>
+	<s:Label
+		left="{ ( includeIconLayout ) ? 22 : 0 }"
+		text="{ label }"
+		textDecoration.over="underline"
+		textDecoration="none"
+		verticalCenter="3"
+		baselineShift="1"
+		/>
+</s:Group>
