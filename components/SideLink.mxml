@@ -45,6 +45,11 @@
 			{
 				return "";
 			}
+			
+			override public function get measuredHeight():Number
+		      {
+			      return 17;
+		      }
 
 		]]>
 	</fx:Script>

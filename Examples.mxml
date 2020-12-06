@@ -16,7 +16,7 @@
 
 		]]>
 	</fx:Script>		
-	<s:VGroup id="myLayout">
+	<s:VGroup id="myLayout" width="100%">
 		<comp:SideLink id="label1"/>
 		<comp:SideLink id="label2"/>
 	</s:VGroup>
