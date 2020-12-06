@@ -3,36 +3,41 @@
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.apache.org/royale/spark"
 	xmlns:mx="library://ns.apache.org/royale/mx"
+	creationComplete="init()"
 	xmlns:comp="components.*"
 	>
-	<fx:Style source="app-styles.css" />
 	<fx:Script>
 		<![CDATA[
+			private function init():void
+			{
+				//SITE_ALIGNMENT.label = "SITE_ALIGNMENT";
+				//SITE_MARGINS.label = "SITE_MARGINS";
+				//SITE_SIZE.label = "SITE_SIZE";
+				//DEFAULT_FONT_STYLE.label = "DEFAULT_FONT_STYLE";	
+			}
+
 		]]>
 	</fx:Script>		
-	<s::VGroup>
+	<s:VGroup id="myLayout">
 		<comp:SideLink 
-			id="defaultFontStylesLink"
+			id="DEFAULT_FONT_STYLE"
 			label="DEFAULT_FONT_STYLE"
-			visible="true"
-			includeInLayout="true"
-			isModuleView="true"
 			/>
 		<comp:SideLink 
+			id="SITE_SIZE"
 			label="SITE_SIZE"
-			action="OPEN_SITE_SIZE"
 			/>
 		<comp:SideLink 
+			id="SITE_MARGINS"
 			label="SITE_MARGINS"
-			action="OPEN_SITE_SIZE"
 			/>
 		<comp:SideLink 
+			id="SITE_ALIGNMENT"
 			label="SITE_ALIGNMENT"
-			action="OPEN_SITE_SIZE"
 			/>
 		<comp:SideLink 
+			id="BORDER_ICON"
 			label="BORDER_ICON"
-			action="OPEN_SITE_BORDER"
 			/>
 	</s:VGroup>
 </s:Application>
