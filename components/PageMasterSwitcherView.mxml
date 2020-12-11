@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group 
+	xmlns:components="components.*"
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:mx="library://ns.apache.org/royale/mx"
+	xmlns:s="library://ns.apache.org/royale/spark" xmlns:js="library://ns.apache.org/royale/basic"
+	creationComplete="addShadow()"
+	>
+
+	<!-- 
+	<fx:Metadata> 
+		[ResourceBundle("PageMasterSwitcher")]
+	</fx:Metadata>
+	-->
+	
+	<fx:Script>
+		<![CDATA[
+			import spark.filters.DropShadowFilter;
+			
+			private function retrieveLabel(item:PageMasterSwitcherData):String
+			{
+				return item.label;
+			}
+			
+			private function addShadow(): void
+			{
+				var dropShadow : DropShadowFilter = new DropShadowFilter(5,30,0x000000,.4);
+				pageMasterDropDownButtons.filters = [dropShadow];
+			}
+				
+		]]>
+	</fx:Script>
+
+	<s:VGroup 
+		width="100%"
+		gap="1"
+		>
+		<s:Spacer height="7" />
+
+		<components:ButtonBarNoToggle 
+			id="pageSwitcherTabButtons"
+			useHandCursor="true"
+			buttonMode="true"
+			width="100%"
+                        labelField="label"
+                        focusEnabled="false">
+                        <components:beads>
+                                <js:VerticalFlexLayout />
+                        </components:beads>
+		</components:ButtonBarNoToggle>
+		<s:PopUpAnchor id="pageMasterDropDown" 
+					   left="0" bottom="0" 
+					   popUpPosition="below" 
+					   displayPopUp="false"
+					   >
+			<components:ButtonBarNoToggle 
+				id="pageMasterDropDownButtons"
+				useHandCursor="true"
+				buttonMode="true"
+				width="100%"
+				focusEnabled="false"
+				>
+				<components:beads>
+					<js:VerticalFlexLayout/>
+				</components:beads>
+			</components:ButtonBarNoToggle>
+		</s:PopUpAnchor>
+		<s:Spacer height="7" />
+	</s:VGroup>
+</s:Group>
