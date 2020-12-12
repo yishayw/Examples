@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cc.sitemaker</groupId>
-  <artifactId>SparkHelloWorld</artifactId>
+  <artifactId>PageSwitcher</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>swf</packaging>
 
-  <name>SparkHelloWorld</name>
+  <name>PageSwitcher</name>
 	
  <properties>
 	 <royale.keepAS3MetaData>-keep-as3-metadata+=
@@ -23,7 +23,7 @@
 	      </local.config>
   </properties>
   <build>
-    <sourceDirectory>.</sourceDirectory>
+    <sourceDirectory>src/main/royale</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.royale.compiler</groupId>
@@ -31,7 +31,7 @@
  		<version>0.9.8-SNAPSHOT</version>
         <extensions>true</extensions>
         <configuration>
-          <mainClass>Examples.mxml</mainClass>
+          <mainClass>PageSwitcher.mxml</mainClass>
           <targets>JSRoyale</targets>
           <debug>true</debug>
 		  <allowSubclassOverrides>true</allowSubclassOverrides>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <output>
+    <movie path="bin-debug/PageSwitcher.swf"/>
+    <movie platform="Flash Player"/>
+    <movie disabled="False"/>
+    <movie height="600"/>
+    <movie width="800"/>
+    <movie fps="60"/>
+    <movie background="#FFFFFF"/>
+    <movie input=""/>
+    <movie version="11"/>
+  </output>
+  &lt;!-- Other classes to be compiled into your SWF --&gt;
+  <jsOutput>
+    <option path=""/>
+  </jsOutput>
+  <classpaths>
+    <class path="src/main/royale"/>
+  </classpaths>
+  <moonshineResourcePaths></moonshineResourcePaths>
+  <moonshineNativeExtensionPaths></moonshineNativeExtensionPaths>
+  <build>
+    <option loadConfig=""/>
+    <option compilerConstants=""/>
+    <option useNetwork="True"/>
+    <option customSDK=""/>
+    <option optimize="False"/>
+    <option sourceMap="False"/>
+    <option additional="+configname=flex"/>
+    <option showActionScriptWarnings="True"/>
+    <option accessible="False"/>
+    <option warnings="True"/>
+    <option showBindingWarnings="True"/>
+    <option useResourceBundleMetadata="True"/>
+    <option allowSourcePathOverlap="False"/>
+    <option locale=""/>
+    <option showDeprecationWarnings="True"/>
+    <option antBuildPath="build/build.xml"/>
+    <option benchmark="False"/>
+    <option linkReport=""/>
+    <option showUnusedTypeSelectorWarnings="True"/>
+    <option verboseStackTraces="False"/>
+    <option es="False"/>
+    <option staticLinkRSL="False"/>
+    <option strict="True"/>
+  </build>
+  <mavenBuild>
+    <option dominoNotesPlatform=""/>
+    <option settingsFilePath=""/>
+    <option commandLine="clean package"/>
+    <option mavenBuildPath=""/>
+    <option dominoNotesProgram=""/>
+    <actions>
+      <action actionName="Build" action="install"/>
+      <action actionName="Clean and package" action="clean package"/>
+      <action actionName="Clean" action="clean"/>
+      <action actionName="Clean and Build" action="clean install"/>
+      <action actionName="Exploded" action="war:exploded"/>
+    </actions>
+  </mavenBuild>
+  <includeLibraries></includeLibraries>
+  <libraryPaths></libraryPaths>
+  <externalLibraryPaths></externalLibraryPaths>
+  <rslPaths></rslPaths>
+  <intrinsics>
+    <element path="Library/AS3/frameworks/Flex4"/>
+    <element path="Library\AS3\frameworks\Flex4"/>
+  </intrinsics>
+  <library></library>
+  <modules/>
+  <compileTargets>
+    <compile path="src/main/royale/PageSwitcher.mxml"/>
+  </compileTargets>
+  <hiddenPaths></hiddenPaths>
+  <preBuildCommand>null</preBuildCommand>
+  <postBuildCommand alwaysRun="False">null</postBuildCommand>
+  <trustSVNCertificate>False</trustSVNCertificate>
+  <options>
+    <option isPrimeFacesVisualEditor="False"/>
+    <option testMovieCommand=""/>
+    <option visualEditorExportPath=""/>
+    <option defaultBuildTargets=""/>
+    <option isRoyale="True"/>
+    <option showHiddenPaths="False"/>
+    <option testMovie=""/>
+    <option isExportedToExistingSource="False"/>
+  </options>
+  <moonshineRunCustomization>
+    <option webBrowser="Google Chrome"/>
+    <option deviceConnectType="USB"/>
+    <option customUrlToLaunch=""/>
+    <option projectType="2"/>
+    <option deviceSimulator="null"/>
+    <option urlToLaunch=""/>
+    <option targetPlatform="5"/>
+    <option launchMethod="Simulator"/>
+    <deviceSimulator>Apple iPad</deviceSimulator>
+    <certAndroid>null</certAndroid>
+    <certIos>null</certIos>
+    <certIosProvisioning>null</certIosProvisioning>
+  </moonshineRunCustomization>
+</project>

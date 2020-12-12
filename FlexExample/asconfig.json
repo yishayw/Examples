@@ -1,9 +1,0 @@
-{
-	"compilerOptions": {
-		"output": "bin-debug/Examples.swf",
-		"source-path": [
-			"."
-		]
-	},
-	"mainClass": "Examples"
-}
