@@ -3,281 +3,10 @@
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:mx="library://ns.apache.org/royale/mx"
 	xmlns:s="library://ns.apache.org/royale/spark"
-	autoDrawBackground="true"
 	height="26"
 	width="100%"
-	color.selected="0xffffff"
-	click="onLabelSimpleClik(event)"
 	>
-	<!--
-	dragOver.normal="onDragOver (event)"
-	dragEnter.normal="onDragEnter(event)"
-	dragDrop.normal="onDragDrop(event)"
-	--> <!-- TODO implement dragEvents YW -->
-	<s:states>
-		<s:State name="normal" />
-		<s:State name="selected" />
-	</s:states>
 
-	<fx:Script>
-		<![CDATA[
-			import cc.sitemaker.shop.events.remote.CategoriesServiceEvent;
-			import cc.sitemaker.shop.model.vo.amf.product.ShopProductSummary;
-			import cc.sitemaker.shop.model.vo.amf.categories.Category;
-			import cc.sitemaker.shop.view.components.productslist.maingrid.CustomDragPreviewDataGrid;
-
-			import mx.events.DragEvent;
-			import mx.events.MouseEvent;
-			import mx.events.FlexEvent;
-			import mx.events.FlexMouseEvent;
-			import mx.events.PropertyChangeEvent;
-			import mx.managers.DragManager;
-
-			import spark.components.List;
-			import spark.components.TextInput;
-
-			public static const CATEGORY_DEFAULT : String = "";
-
-			public static const DROP_ACCEPTED : String = "a drop has been done";
-
-			public static const EDITION_START : String = "contentEditionStart";
-
-			public static const EDITION_END : String = "contentEditionEnd";
-
-			private var _categoryInput : TextInput;
-
-			private var _inputValue : String;
-
-			override public function set data( value : Object ) : void
-			{
-				if( value && super.data != value )
-				{
-					super.data = value;
-					( data as Category ).addEventListener( PropertyChangeEvent.PROPERTY_CHANGE, onDataChange );
-					var current : Category = value as Category;
-					var cat : Category = value as Category;
-					onDataChange();
-
-				}
-			}
-
-			override protected function updateDisplayList( unscaledWidth : Number, unscaledHeight : Number ) : void
-			{
-				super.updateDisplayList( unscaledWidth, unscaledHeight );
-
-				if( currentState != "selected" )
-				{
-					if( ( data as Category ).hidden )
-					{
-						labelDisplay.setStyle( 'color', 0xababab );
-					}
-					else
-					{
-						labelDisplay.setStyle( 'color', 0x333333 );
-					}
-				}
-			}
-
-			private function onDataChange( e : PropertyChangeEvent = null ) : void
-			{
-				var current : Category = data as Category;
-
-				if( current.t_productCount == 0 && !current.t_isNewCategory && !current.t_isAllCategory )
-				{
-					toolTip = resourceManager.getString( 'Shop', 'DRAG_DROP_PRODUCT_TO_ADD' );
-				}
-				else
-				{
-					toolTip = "";
-				}
-
-				if( current.t_isTheSelectedProductLinkedToThis )
-				{
-					productCountContainer.color = 0x3fb230;
-					productCountContainer.alpha = 1;
-					productCountLabel.setStyle( 'color', 0xffffff );
-				}
-				else
-				{
-					productCountContainer.color = 0x3d3d3d;
-					productCountContainer.alpha = 0.12;
-					productCountLabel.setStyle( 'color', '0x333333' );
-				}
-
-				if( currentState == "selected" )
-				{
-					productCountLabel.setStyle( 'color', 0xffffff );
-				}
-				destroyTextInput();
-
-				if( e && e.property == "t_productCount" )
-				{
-					productCountLabel.text = current.t_productCount.toString();
-				}
-			}
-
-			private function onDragOver( e : DragEvent ) : void
-			{
-				DragManager.showFeedback( DragManager.COPY );
-			}
-
-			private function onDragEnter( e : DragEvent ) : void
-			{
-				if( e.dragInitiator is CustomDragPreviewDataGrid )
-				{
-					var itemsArray : Array = e.dragSource.dataForFormat( 'items' ) as Array;
-					var movedProductSummary : ShopProductSummary = itemsArray[ 0 ] as ShopProductSummary;
-					var currentCategory : Category = data as Category;
-
-					if( !currentCategory.isProductInCategory( movedProductSummary ) )
-					{
-						var dropTarget : * = e.currentTarget;
-						DragManager.acceptDragDrop( dropTarget );
-						e.preventDefault();
-					}
-				}
-			}
-
-			private function onDragDrop( e : DragEvent ) : void
-			{
-				// access various datas
-				var itemsArray : Array = e.dragSource.dataForFormat( 'items' ) as Array;
-				var movedProductSummary : ShopProductSummary = itemsArray[ 0 ] as ShopProductSummary;
-				var currentCategory : Category = data as Category;
-				//  dispatch 
-				var categoryEvent : CategoriesServiceEvent = new CategoriesServiceEvent( CategoriesServiceEvent.ADD_PRODUCT_TO_CATEGORY_SERVICE );
-				categoryEvent.updatedCategory = currentCategory;
-				categoryEvent.productSummary = movedProductSummary;
-				dispatchEvent( categoryEvent );
-			}
-
-			protected function removedFromStageHandler( event : Event ) : void
-			{
-				if( data )
-				{
-					( data as Category ).removeEventListener( PropertyChangeEvent.PROPERTY_CHANGE, onDataChange );
-				}
-			}
-
-			/* because of a framework bug on pressing enter
-			not removing the caret cursor on textinput field
-			we create / destroy the textInput when needed
-			*/
-			private function createTextInput() : void
-			{
-				//  ooops while editing this field we prevent drag and drop operation on the parent list ..
-				//( owner as List ).dragEnabled = false;
-				_categoryInput = new TextInput();
-				addElement( _categoryInput );
-				_categoryInput.width = 105;
-				_categoryInput.height = 20;
-				_categoryInput.maxChars = 100;
-				_categoryInput.setStyle( 'fontSize', 13 );
-				_categoryInput.setStyle( 'color', 0x333333 );
-				_categoryInput.top = 3;
-				_categoryInput.left = 2;
-				_categoryInput.selectRange( _categoryInput.text.length, _categoryInput.text.length + 1 );
-				_categoryInput.setFocus();
-				_categoryInput.addEventListener( FocusEvent.FOCUS_OUT, onChange );
-				_categoryInput.addEventListener( FlexEvent.ENTER, onChange );
-				_categoryInput.addEventListener( FlexMouseEvent.MOUSE_DOWN_OUTSIDE, onChange );
-				_categoryInput.text = CATEGORY_DEFAULT;
-				dispatchEvent( new Event( EDITION_START, true ) );
-			}
-
-			private function destroyTextInput() : void
-			{
-				if( _categoryInput )
-				{
-					removeElement( _categoryInput );
-					_inputValue = _categoryInput.text;
-					_categoryInput.removeEventListener( FocusEvent.FOCUS_OUT, onChange );
-					_categoryInput.removeEventListener( FlexEvent.ENTER, onChange );
-					_categoryInput = null;
-					dispatchEvent( new Event( EDITION_END, true ) );
-				}
-			}
-
-			protected function onLabelSimpleClik( event : mx.events.MouseEvent ) : void
-			{
-				var current : Category = data as Category;
-
-				if( current.t_isNewCategory )
-				{
-					if( !_categoryInput )
-					{
-						createTextInput();
-					}
-				}
-			}
-
-			protected function onLabelDoubleClik( event : mx.events.MouseEvent ) : void
-			{
-				var current : Category = data as Category;
-
-				if( !current.t_isNewCategory )
-				{
-					if( !_categoryInput )
-					{
-						createTextInput();
-					}
-					_categoryInput.text = current.title;
-
-					if( current.t_isNewCategory )
-					{
-						_categoryInput.text = CATEGORY_DEFAULT;
-					}
-				}
-			}
-
-			private function onChange( event : Event = null ) : void
-			{
-				//( owner as List ).dragEnabled = true;
-				destroyTextInput();
-				publishData();
-			}
-
-			private function publishData() : void
-			{
-				var current : Category = data as Category;
-
-				if( current.t_isNewCategory )
-				{
-					checkForNewChange();
-				}
-				else
-				{
-					checkForRename();
-				}
-			}
-
-			private function checkForNewChange() : void
-			{
-				if( _inputValue != CATEGORY_DEFAULT && _inputValue != "" )
-				{
-					var eventAdd : CategoriesServiceEvent = new CategoriesServiceEvent( CategoriesServiceEvent.CREATE_CATEGORY_SERVICE );
-					eventAdd.newCategoryName = _inputValue;
-					dispatchEvent( eventAdd );
-				}
-			}
-
-			private function checkForRename() : void
-			{
-				if( _inputValue != data.title )
-				{
-					var currentCategory : Category = data as Category;
-					var clonedCategory : Category = currentCategory.clone();
-					clonedCategory.title = _inputValue;
-					
-					var renameEvent : CategoriesServiceEvent = new CategoriesServiceEvent( CategoriesServiceEvent.UPDATE_CATEGORY );
-					renameEvent.oldCategory = currentCategory;
-					renameEvent.updatedCategory = clonedCategory;
-					
-					dispatchEvent( renameEvent );
-				}
-			}
-		]]>
-	</fx:Script>
 
 	<s:Group 
 		width="100%"
@@ -286,10 +15,8 @@
 		<s:Label 
 			id="labelDisplay"
 			fontSize="13"
-			text="{ data.title }"
+			text="{data}"
 			doubleClickEnabled="true"
-			doubleClick="onLabelDoubleClik(event as mx.events.MouseEvent)"
-			color.selected="0xffffff"
 			width="105"
 			height="20"
 			top="7"
@@ -303,7 +30,7 @@
 		right="4"
 		top="5"
 		minWidth="20"
-		visible="{ !data.t_isNewCategory }"
+		visible="false"
 		>
 		<s:Rect 
 			top="0"
@@ -330,12 +57,9 @@
 		<s:Label 
 			id="productCountLabel"
 			top="3"
-			color.selected="0xffffff"
-			color.normal="0x333333"
 			fontSize="10"
 			minWidth="20"
 			textAlign="center"
-			text="{ data.t_productCount }"
 			paddingRight="3"
 			paddingTop="2"
 			paddingBottom="2"

@@ -1,17 +1,13 @@
-
 @namespace "library://ns.apache.org/royale/spark";
+@namespace comp "components.*";
 
-ButtonBar {
-    /* @todo Yishay pls review:
-     without this, we get startup errors when setting labelField,
-     I think maybe it should be Royale default, but I don't know what is happening
-     with the flex 4 skinning model here, if 'skinClass' is assigned
-     normally (Flex 4) it should use the 'dataGroup' instance in the skin class I think....
-     */
-    IContentView: ClassReference("spark.components.DataGroup");
-}
-
-ButtonBase {
-	IBeadModel: ClassReference("org.apache.royale.html.beads.models.TextModel");
+comp|MyRenderer
+{
+	IBeadController: ClassReference("org.apache.royale.html.beads.controllers.ItemRendererMouseController");
+	padding-top: 4px;
+	padding-bottom: 4px;
+	flex-shrink: 0;
+	flex-grow: 1;
+	cursor: pointer;
 }
 

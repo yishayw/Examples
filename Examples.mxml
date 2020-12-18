@@ -4,10 +4,10 @@
 	xmlns:s="library://ns.apache.org/royale/spark"
 	creationComplete="init()"
 	>
+	<fx:Style source="app-styles.css"/>
 	<fx:Script>
 		<![CDATA[
 
-			import components.MyComp;
 			import mx.collections.ArrayList;
 			
 			private function init():void
@@ -23,11 +23,5 @@
 
 		]]>
 	</fx:Script>
-	<s:List id="myList" width="100%" height="100%" change="changeHandler()">	
-		<s:itemRenderer>
-			<fx:Component>
-				<s:TextInput/>
-			</fx:Component>
-		</s:itemRenderer>
-	</s:List>
+	<s:List id="myList" width="100%" height="100%" change="changeHandler()" itemRenderer="components.MyRenderer"/>
 </s:Application>
