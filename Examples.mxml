@@ -2,48 +2,32 @@
 <s:Application 
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.apache.org/royale/spark"
-	xmlns:mx="library://ns.apache.org/royale/mx"
 	creationComplete="init()"
-	xmlns:comp="components.*"
 	>
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.ArrayCollection;
-			import components.PageMasterSwitcherData;
 
+			import components.MyComp;
+			import mx.collections.ArrayList;
+			
 			private function init():void
 			{
-				myView.pageMasterDropDownButtons.dataProvider = createDropDownButtons();
-				myView.pageSwitcherTabButtons.dataProvider = creationTabButtons();
+				var dp:ArrayList = new ArrayList(['one', 'two', 'three']);
+				myList.dataProvider = dp;
 			}
 
-			private function createDropDownButtons():ArrayCollection
+			private function changeHandler():void
 			{
-				var coll:ArrayCollection = new ArrayCollection();
-				var item:PageMasterSwitcherData = new PageMasterSwitcherData("label1", "type1", true);
-				coll.addItem(item);
-				item = new PageMasterSwitcherData("label2", "type2", true);
-				coll.addItem(item);
-				item = new PageMasterSwitcherData("label3", "type3", true);
-				coll.addItem(item);
-				return coll;
-			}
-
-
-			private function creationTabButtons():ArrayCollection
-			{
-				var coll:ArrayCollection = new ArrayCollection();
-				var item:PageMasterSwitcherData = new PageMasterSwitcherData("tab_label1", "tab_tyoe1", true);
-				coll.addItem(item);
-				item = new PageMasterSwitcherData("tab_label2", "tab_tyoe2", true);
-				coll.addItem(item);
-				item = new PageMasterSwitcherData("tab_label3", "tab_tyoe3", true);
-				coll.addItem(item);
-				return coll;
+				trace("here i am");
 			}
 
 		]]>
-	</fx:Script>		
-	<comp:PageMasterSwitcherView id="myView" width="100%" height="100%"/>
-
+	</fx:Script>
+	<s:List id="myList" width="100%" height="100%" change="changeHandler()">	
+		<s:itemRenderer>
+			<fx:Component>
+				<s:TextInput/>
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
 </s:Application>
