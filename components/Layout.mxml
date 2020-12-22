@@ -6,13 +6,13 @@
 	height="100%"
 	width="100%">
    
-         <s:SkinnableContainer id="fishy" style="background-color: blue; alpha: 0.5" >
-            <s:SkinnableContainer width="100%"  style="background-color: green; alpha: 0.5">
+         
+            <s:SkinnableContainer id="innerParent" style="background-color: green; alpha: 0.5">
                <s:layout>
                   <s:VerticalLayout paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20" />
                </s:layout>
-               <s:Group id="productSummary" height="75" width="588" style="background-color: red; alpha: 0.5"/>
+               <s:Group id="content" height="75" width="588" style="background-color: red; alpha: 0.5"/>
             </s:SkinnableContainer>
-         </s:SkinnableContainer>
+         
    
 </s:Group>
