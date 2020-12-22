@@ -14,11 +14,11 @@
    <s:HGroup height="100%" width="100%">
       <s:VGroup height="100%" width="100%" top="0">
          <s:Group id="notificationBar" height="30" includeInLayout="false" width="100%" />
-         <s:SkinnableContainer>
+         <s:SkinnableContainer id="fishy" style="background-color: blue; alpha: 0.5" >
             <s:layout>
                <s:VerticalLayout gap="-1" />
             </s:layout>
-            <s:SkinnableContainer width="100%">
+            <s:SkinnableContainer width="100%"  style="background-color: green; alpha: 0.5">
                <s:layout>
                   <s:VerticalLayout paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20" />
                </s:layout>
