@@ -23,69 +23,7 @@
                   <s:VerticalLayout paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20" />
                </s:layout>
                <s:VGroup bottom="10" left="10" right="10" top="10">
-                  <s:Label styleName="titleMedium" text="PRODUCT_NAME" textAlign="right" />
-                  <s:TextInput id="productName" styleName="large" width="100%" textAlign="left" />
-                  <mx:Spacer height="15" />
-                  <s:Label styleName="titleMedium" text="DESCRIPTION" textAlign="right" />
                   <s:TextArea id="productSummary" height="75" horizontalScrollPolicy="off" verticalScrollPolicy="auto" width="588" textAlign="left" />
-                  <mx:Spacer height="15" />
-                  <s:HGroup verticalAlign="middle" width="100" gap="0">
-                     <s:Label styleName="titleMedium" text="PRICE" />
-                     <s:Spacer width="16" />
-                     <s:Label id="priceSymbol" styleName="titleMedium" textAlign="left" />
-                     <s:Spacer width="3" />
-                     <s:TextInput id="productPrice" text="0" width="60" restrict="0123456789." />
-                     <s:Spacer width="3" />
-                     <s:Spacer width="3" />
-
-                  </s:HGroup>
-                  <s:Spacer height="12" />
-                  <s:VGroup id="stockManagementGroup" gap="0">
-                     <s:HGroup gap="6" width="100%" verticalAlign="middle">
-                        <s:HGroup gap="9" verticalAlign="middle">
-                           <s:Label styleName="titleMedium" text="QUANTITY" />
-                           <s:NumericStepper id="quantity" minimum="0" maximum="1000000" width="60" enabled="false" />
-                        </s:HGroup>
-                        <s:CheckBox
-				id="infiniteStockCheck"
-				selected="true"
-				label="UNLIMITED"
-				fontSize="11"
-				styleName="bodyLight"
-				/>
-                        <mx:Spacer width="10" />
-                        <s:Label styleName="titleMedium" text="SKU_OPTIONAL" />
-                        <s:TextInput
-				id="stockId"
-				width="130"
-				textAlign="left"
-				styleName="titleMediumLight"
-				restrict="-_abcdefghijklmnopqrstuvwxyzABCDEFEGHIJKLMNOPQRSTUVWXZ-0123456789" />
-                        <s:Group/>
-                     </s:HGroup>
-                     <mx:Spacer height="15" />
-                  </s:VGroup>
-                  <s:Line width="100%">
-                     <s:stroke>
-                        <s:SolidColorStroke color="#CCCCCC" weight="1" />
-                     </s:stroke>
-                  </s:Line>
-                  <mx:Spacer height="15" />
-                  <s:Group id="variantsView" width="100%" />
-                  <mx:Spacer height="15" />
-                  <s:Line width="100%">
-                     <s:stroke>
-                        <s:SolidColorStroke color="#CCCCCC" weight="1" />
-                     </s:stroke>
-                  </s:Line>
-                  <mx:Spacer height="15" />
-                  <mx:Spacer height="15" />
-                  <mx:Spacer height="15" />
-                  <s:Line width="100%">
-                     <s:stroke>
-                        <s:SolidColorStroke color="#CCCCCC" weight="1" />
-                     </s:stroke>
-                  </s:Line>
                </s:VGroup>
             </s:SkinnableContainer>
             <s:SkinnableContainer width="100%">
@@ -95,25 +33,13 @@
                   </s:layout>
                   <s:HGroup verticalAlign="middle" gap="0">
                      <s:Label text="STATUS" />
-                     <s:Spacer width="3" />
-                     <s:DropDownList
-
-		     id="statusDropDown" width="120" />
-                     <mx:Spacer width="20" />
-                     <s:Group id="deleteProduct" height="100%" width="35" />
-                     <s:Spacer width="3" />
                      <s:Button id="viewProductButton" label="VIEW" styleName="medium" width="73" />
                      <s:Spacer width="3" />
                      <s:Button id="persistProductButton" label="SAVE" styleName="medium" width="73" />
-                     <s:Image id="saveError" height="17" width="17" visible="false" />
                   </s:HGroup>
                </s:Group>
             </s:SkinnableContainer>
          </s:SkinnableContainer>
-      </s:VGroup>
-      <s:VGroup width="265" gap="10">
-      <s:Group/>
-      <s:Group/>
       </s:VGroup>
    </s:HGroup>
 </s:Group>
