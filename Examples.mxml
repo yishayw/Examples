@@ -7,6 +7,6 @@
 		<s:layout>
 			<s:VerticalLayout paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20" />
 		</s:layout>
-		<s:Group id="myContent" height="75" width="588" style="background-color: red; alpha: 0.5"/>
+		<s:Button id="myContent" height="75" width="588" style="background-color: red; alpha: 0.5"/>
 	</s:SkinnableContainer>
 </s:Application>
