@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:mx="library://ns.apache.org/royale/mx"
+	xmlns:s="library://ns.apache.org/royale/spark"
+	useHandCursor="true"
+	useHandCursor.disabled="false"
+	buttonMode="true"
+	buttonMode.disabled="false"
+	minWidth="44"
+	height="24"
+	creationComplete="init()"
+	>
+
+	<!-- host component -->
+	<fx:Metadata>
+		[Event( name = "change", type = "org.apache.royale.events.Event" )]
+	</fx:Metadata>
+	<fx:Script>
+		<![CDATA[
+
+
+			import org.apache.royale.events.Event;
+			import mx.events.MouseEvent;
+			import org.apache.royale.utils.getTimer;
+
+			import mx.collections.ArrayList;
+			import mx.events.FlexEvent;
+
+			import org.apache.royale.html.beads.models.ImageAndTextModel;
+
+			private var _selected : Boolean;
+
+			private var _toggle : Boolean;
+
+			private var _lastClickTime : int;
+
+			public var isExternalLink : Boolean = false;
+
+			private function init():void
+			{
+				model = new ImageAndTextModel();
+				_toggle = true;
+				_lastClickTime = getTimer();
+				focusEnabled = false;
+				addEventListener(MouseEvent.CLICK, clickHandler);
+			}
+
+			[Bindable]
+			public function get selected() : Boolean
+			{
+				return _selected;
+			}
+
+			public function set selected( value : Boolean ) : void
+			{
+				if( value == _selected )
+				{
+					return;
+				}
+
+				_selected = value;
+				dispatchEvent( new FlexEvent( FlexEvent.VALUE_COMMIT ) );
+			}
+
+			[Bindable]
+			public function get toggle() : Boolean
+			{
+				return _toggle;
+			}
+
+			public function set toggle( value : Boolean ) : void
+			{
+				if( value == _toggle )
+				{
+					return;
+				}
+
+				_toggle = value;
+			}
+
+			protected function clickHandler( event : MouseEvent ) : void
+			{
+				var clickTime : int = getTimer();
+				var isDoubleClick : Boolean = ( _lastClickTime + 400 ) > clickTime;
+				_lastClickTime = clickTime;
+
+				if( isDoubleClick )
+				{
+					return;
+				}
+
+				if( _toggle && !isExternalLink )
+				{
+					selected = !selected;
+					dispatchEvent( new Event( Event.CHANGE ) );
+					event.updateAfterEvent();
+				}
+			}
+
+	]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="selected" />
+		<s:State name="disabled" />
+	</s:states>
+
+	<s:Label
+		id="labelDisplay"
+		top="18"
+		textAlign="center"
+		color="#f2f2f2"
+		color.over="#92cdcf"
+		color.selected="#92cdcf"
+		fontSize="11.5"
+		width="100%"
+		verticalCenter="0"
+		alpha.disabled="0.3"
+		paddingLeft="9"
+		paddingRight="9"
+		/>
+
+</s:Group>
