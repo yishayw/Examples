@@ -20,6 +20,7 @@
 		<![CDATA[
 
 
+			import org.apache.royale.events.IEventDispatcher;
 			import org.apache.royale.events.Event;
 			import mx.events.MouseEvent;
 			import org.apache.royale.utils.getTimer;
@@ -27,7 +28,6 @@
 			import mx.collections.ArrayList;
 			import mx.events.FlexEvent;
 
-			import org.apache.royale.html.beads.models.ImageAndTextModel;
 
 			private var _selected : Boolean;
 
@@ -39,11 +39,17 @@
 
 			private function init():void
 			{
-				model = new ImageAndTextModel();
 				_toggle = true;
 				_lastClickTime = getTimer();
 				focusEnabled = false;
-				addEventListener(MouseEvent.CLICK, clickHandler);
+				addEventListener(mx.events.MouseEvent.CLICK, clickHandler);
+				if (_labelPending)
+				{
+					labelDisplay.text = _label;
+					if (parent)
+						(parent as IEventDispatcher).dispatchEvent(new Event("layoutNeeded"));			
+				}
+				addEventListener(mx.events.MouseEvent.MOUSE_DOWN, mouseHandler);
 			}
 
 			[Bindable]
@@ -52,15 +58,49 @@
 				return _selected;
 			}
 
+			private function mouseHandler(event:mx.events.MouseEvent):void
+			{
+				currentState = event.type == !enabled ? 'disabled' :
+				       	mx.events.MouseEvent.MOUSE_DOWN ? "down" :
+					event.type == mx.events.MouseEvent.MOUSE_UP ? "up" :
+					event.type == mx.events.MouseEvent.ROLL_OVER ? "over" :
+					selected ? "selected" : "normal";
+			}
+
+
 			public function set selected( value : Boolean ) : void
 			{
 				if( value == _selected )
 				{
 					return;
 				}
-
 				_selected = value;
 				dispatchEvent( new FlexEvent( FlexEvent.VALUE_COMMIT ) );
+				currentState = "selected";
+			}
+
+			private var _labelPending:Boolean;
+			private var _label:String;
+			public function set label(value:String):void
+			{
+				_label = value;
+				if (!labelDisplay)
+				{
+					_labelPending = true;
+				} else
+				{
+					labelDisplay.text = value;
+					if (parent)
+						(parent as IEventDispatcher).dispatchEvent(new Event("layoutNeeded"));			
+				}
+			}
+
+			/**
+			 *  @private
+			 */
+			public function get label():String          
+			{
+				return _label;
 			}
 
 			[Bindable]
@@ -79,7 +119,7 @@
 				_toggle = value;
 			}
 
-			protected function clickHandler( event : MouseEvent ) : void
+			protected function clickHandler( event : mx.events.MouseEvent ) : void
 			{
 				var clickTime : int = getTimer();
 				var isDoubleClick : Boolean = ( _lastClickTime + 400 ) > clickTime;
@@ -110,7 +150,7 @@
 
 	<s:Label
 		id="labelDisplay"
-		top="18"
+		paddingTop="18"
 		textAlign="center"
 		color="#f2f2f2"
 		color.over="#92cdcf"
