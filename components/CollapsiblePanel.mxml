@@ -89,6 +89,10 @@
 						state += "_" + position;
 						break;
 				}
+				if (header)
+				{
+					header.currentState = state;
+				}
 				return state;
 			}
 
