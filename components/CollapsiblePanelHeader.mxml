@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.apache.org/royale/spark"
+	alpha.disabled="0.5"
+	useHandCursor="true"
+	buttonMode="true"
+	top="0"
+	left="0"
+	bottom="0"
+	right="0"
+	creationComplete="onCreationCompleted(event)"
+	>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+
+			[Bindable]
+			private var customFontSize : Number = 11;
+
+			protected function onCreationCompleted(event:FlexEvent):void
+			{
+				var parentFontStyle : Number =  getStyle("fontSize");
+				customFontSize = (parentFontStyle) ? parentFontStyle :customFontSize;
+				if (_labelPending)
+				{
+					labelDisplay.text = _label;
+					if (parent)
+						(parent as IEventDispatcher).dispatchEvent(new Event("layoutNeeded"));			
+				}
+				addEventListener(mx.events.MouseEvent.MOUSE_DOWN, mouseHandler);
+				addEventListener(mx.events.MouseEvent.MOUSE_UP, mouseHandler);
+				addEventListener(mx.events.MouseEvent.ROLL_OVER, mouseHandler);
+				addEventListener(mx.events.MouseEvent.ROLL_OUT, mouseHandler);
+			}
+
+			function mouseHandler(event:mx.events.MouseEvent):void
+			{
+				currentState = event.type == !enabled ? 'disabled' :
+				       	mx.events.MouseEvent.MOUSE_DOWN ? "down" :
+					event.type == mx.events.MouseEvent.MOUSE_UP ? "up" :
+					event.type == mx.events.MouseEvent.ROLL_OVER ? "over" : "normal";
+			}
+
+			private var _labelPending:Boolean;
+			private var _label:String;
+			public function set label(value:String):void
+			{
+				_label = value;
+				if (!labelDisplay)
+				{
+					_labelPending = true;
+				} else
+				{
+					labelDisplay.text = value;
+					if (parent)
+						(parent as IEventDispatcher).dispatchEvent(new Event("layoutNeeded"));			
+				}
+			}
+
+			/**
+			 *  @private
+			 */
+			public function get label():String          
+			{
+				return _label;
+			}
+		]]>
+	</fx:Script>
+
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+	<s:Label
+		id="labelDisplay"
+		fontSize="{customFontSize}"
+		fontFamily="SMhelveticaCFF"
+		color="0xffffff"
+		color.over="0x92cdcf"
+		textDecoration="none"
+		bottom="0"
+		/>
+</s:Group>
