@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:mx="library://ns.apache.org/royale/mx"
 	xmlns:s="library://ns.apache.org/royale/spark"
-	alpha.disabled="0.5"
-	useHandCursor="true"
-	buttonMode="true"
-	top="0"
-	left="0"
-	bottom="0"
-	right="0"
-	creationComplete="onCreationCompleted(event)"
+	minHeight="25"
 	>
 	<fx:Script>
 		<![CDATA[
@@ -28,18 +22,6 @@
 					if (parent)
 						(parent as IEventDispatcher).dispatchEvent(new Event("layoutNeeded"));			
 				}
-				addEventListener(mx.events.MouseEvent.MOUSE_DOWN, mouseHandler);
-				addEventListener(mx.events.MouseEvent.MOUSE_UP, mouseHandler);
-				addEventListener(mx.events.MouseEvent.ROLL_OVER, mouseHandler);
-				addEventListener(mx.events.MouseEvent.ROLL_OUT, mouseHandler);
-			}
-
-			function mouseHandler(event:mx.events.MouseEvent):void
-			{
-				currentState = event.type == !enabled ? 'disabled' :
-				       	mx.events.MouseEvent.MOUSE_DOWN ? "down" :
-					event.type == mx.events.MouseEvent.MOUSE_UP ? "up" :
-					event.type == mx.events.MouseEvent.ROLL_OVER ? "over" : "normal";
 			}
 
 			private var _labelPending:Boolean;
@@ -73,14 +55,168 @@
 		<s:State name="over" />
 		<s:State name="down" />
 		<s:State name="disabled" />
+
+		<!-- top -->
+		<s:State
+			name="up_top"
+			stateGroups="top"
+			/>
+		<s:State
+			name="over_top"
+			stateGroups="top"
+			/>
+		<s:State
+			name="down_top"
+			stateGroups="top"
+			/>
+		<s:State
+			name="disabled_top"
+			stateGroups="top"
+			/>
+
+		<!-- middle -->
+		<s:State
+			name="up_middle"
+			stateGroups="middle"
+			/>
+		<s:State
+			name="over_middle"
+			stateGroups="middle"
+			/>
+		<s:State
+			name="down_middle"
+			stateGroups="middle"
+			/>
+		<s:State
+			name="disabled_middle"
+			stateGroups="middle"
+			/>
+
+		<!-- bottom -->
+		<s:State
+			name="up_bottom"
+			stateGroups="bottom"
+			/>
+		<s:State
+			name="over_bottom"
+			stateGroups="bottom"
+			/>
+		<s:State
+			name="down_bottom"
+			stateGroups="bottom"
+			/>
+		<s:State
+			name="disabled_bottom"
+			stateGroups="bottom"
+			/>
+
+		<!-- solo -->
+		<s:State
+			name="up_solo"
+			stateGroups="solo"
+			/>
+		<s:State
+			name="over_solo"
+			stateGroups="solo"
+			/>
+		<s:State
+			name="down_solo"
+			stateGroups="solo"
+			/>
+		<s:State
+			name="disabled_solo"
+			stateGroups="solo"
+			/>
+
+		<!-- bottom -->
+		<s:State
+			name="up_bottom_open"
+			stateGroups="bottom_open"
+			/>
+		<s:State
+			name="over_bottom_open"
+			stateGroups="bottom_open"
+			/>
+		<s:State
+			name="down_bottom_open"
+			stateGroups="bottom_open"
+			/>
+		<s:State
+			name="disabled_bottom_open"
+			stateGroups="bottom_open"
+			/>
+
+		<!-- solo -->
+		<s:State
+			name="up_solo_open"
+			stateGroups="solo_open"
+			/>
+		<s:State
+			name="over_solo_open"
+			stateGroups="solo_open"
+			/>
+		<s:State
+			name="down_solo_open"
+			stateGroups="solo_open"
+			/>
+		<s:State
+			name="disabled_solo_open"
+			stateGroups="solo_open"
+			/>
 	</s:states>
+	<s:Rect
+		left="-1"
+		right="-1"
+		top="-1"
+		bottom="-1"
+		>
+		<s:fill>
+			<s:SolidColor color="0x30353C" />
+		</s:fill>
+	</s:Rect>
+
+	<s:Line
+		left="0"
+		right="0"
+		top="-1"
+		excludeFrom="top, solo, solo_open"
+		>
+		<s:stroke>
+			<s:SolidColorStroke
+				color="0xCCCCCC"
+				caps="square"
+				/>
+		</s:stroke>
+	</s:Line>
+
+	<s:Line
+		left="0"
+		right="0"
+		bottom="-1"
+		excludeFrom="bottom, solo"
+		>
+		<s:stroke>
+			<s:SolidColorStroke
+				color="0xCCCCCC"
+				caps="square"
+				/>
+		</s:stroke>
+	</s:Line>
+
+	<!-- Title text field -->
 	<s:Label
 		id="labelDisplay"
-		fontSize="{customFontSize}"
-		fontFamily="SMhelveticaCFF"
+		lineBreak="toFit"
+		left="10"
+		right="20"
+		top="1"
+		height="24"
+		verticalAlign="middle"
 		color="0xffffff"
-		color.over="0x92cdcf"
-		textDecoration="none"
-		bottom="0"
+		maxDisplayedLines="1"
+		alpha.disabled="0.4"
+		mouseFocusEnabled="false"
+		useHandCursor="true"
+		buttonMode="true"
 		/>
 </s:Group>

@@ -2,6 +2,7 @@
 <s:SparkSkin
 	xmlns:fx="http://ns.adobe.com/mxml/2009"
 	xmlns:s="library://ns.apache.org/royale/spark"
+	xmlns:comp="components.*"
 	height.closed="26"
 	>
 
@@ -193,7 +194,7 @@
 		</s:fill>
 	</s:Rect>
 
-	<s:Button
+	<comp:CollapsiblePanelHeader
 		id="header"
 		top="0"
 		left="0"

@@ -31,9 +31,10 @@
 		<![CDATA[
 
 			import spark.components.Button;
+			import components.CollapsiblePanelHeader;
 
 			[SkinPart( required="true" )]
-			public var header : Button;
+			public var header : CollapsiblePanelHeader;
 
 			protected var _open : Boolean = true;
 
